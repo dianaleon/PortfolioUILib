@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.portfolio.components.ContactItem xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/contentText"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginTop="2dp"
+        android:background="@color/white"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="@string/phone" />
+
+</com.portfolio.components.ContactItem>

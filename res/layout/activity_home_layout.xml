@@ -1,0 +1,64 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:scrollbarStyle="insideInset"
+    android:weightSum="10.0" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="9.0"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbarStyle="insideOverlay"
+        android:scrollbars="vertical"
+        android:weightSum="10.0" >
+
+        <include
+            android:id="@+id/layout_header"
+            layout="@layout/header_layout" />
+
+        <LinearLayout
+            android:id="@+id/body"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_weight="7.0"
+            android:gravity="top|center_horizontal"
+            android:orientation="vertical" >
+
+            <ViewFlipper
+                android:id="@+id/flipper"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" >
+
+                <include
+                    android:id="@+id/layout_content"
+                    layout="@layout/body_home" />
+
+                <include
+                    android:id="@+id/layout_menu"
+                    layout="@layout/menu_layout" />
+            </ViewFlipper>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0" >
+
+        <include
+            android:id="@+id/layout_footer"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            layout="@layout/footer_layout" />
+    </LinearLayout>
+
+</LinearLayout>
