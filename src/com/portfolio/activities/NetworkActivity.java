@@ -5,36 +5,23 @@ import java.util.List;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.Typeface;
-import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.TextView;
-import android.widget.ViewFlipper;
 
 import com.portfolio.R;
-import com.portfolio.components.menu;
 import com.portfolio.model.PortfolioModel;
-import com.portfolio.model.interfaces.IMenu;
 import com.portfolio.model.interfaces.INetworkPage;
 import com.portfolio.model.interfaces.component.INetworkObject;
 import com.portfolio.model.interfaces.component.IPageObject;
-import com.portfolio.utils.UIUtils;
+import com.portfolio.util.UIUtils;
 
 public class NetworkActivity extends Activity {
 
-	private Button buttonMenu;
-
-	ViewFlipper flipper;
 	String addressfb = null;
 	String addresstwitter = null;
 	String addressgplus = null;
@@ -59,15 +46,8 @@ public class NetworkActivity extends Activity {
 		// caragr info
 		List<IPageObject> objetos = netPage.getObjects();
 
-		// Cargar el titulo en la pagina
-		PortfolioModel portfolioModel = PortfolioModel.getInstance(this);
-		IMenu menu = portfolioModel.getPorfolioMenu();
-		// Find views
-		TextView textViewTittle = (TextView) findViewById(R.id.tittle_app);
-		TextView textViewSubTittle = (TextView) findViewById(R.id.sub_tittle_app);
-		// Set title and subtitle from json
-		textViewTittle.setText(menu.getTitle());
-		textViewSubTittle.setText(menu.getSubtitle());
+		UIUtils.setHeader(this);
+
 		TableLayout tableLayout = (TableLayout) findViewById(R.id.layout_content);
 		UIUtils.setGradient(tableLayout, netPage.getType().getBackground().getStartColor(), netPage.getType().getBackground().getEndColor(), String.valueOf(netPage.getType().getBackground().getAngle()));
 
@@ -193,72 +173,8 @@ public class NetworkActivity extends Activity {
 			}
 		}
 
-		// FUENTES
-		Typeface font1 = Typeface.createFromAsset(getAssets(),
-				"fonts/CopperplateGothicStd 31BC.otf");
-		TextView customTittle = (TextView) findViewById(R.id.tittle_app);
-		customTittle.setTypeface(font1);
-		customTittle.setTextSize(22);
-		// customTittle.setText(TITULO);
-
-		TextView customSubtittle = (TextView) findViewById(R.id.sub_tittle_app);
-		customSubtittle.setTypeface(font1);
-		customSubtittle.setTextSize(14);
-		customSubtittle.setTextScaleX(1);
-		// customTittle.setText(SUBTITULO);
-
-		customTittle.setText(menu.getTitle());
-		customSubtittle.setText(menu.getSubtitle());
-
 		// MENU
-		final menu menuLayout = (menu) findViewById(R.id.layout_menu);
-		LinearLayout bgFooter = (LinearLayout) findViewById(R.id.layout_footer);
-		String colorStartMenu = menu.getBackground().getStartColor();
-		String colorEndMenu = menu.getBackground().getEndColor();
-		int cStartMenu = Color.parseColor(colorStartMenu);
-		int cEndMenu = Color.parseColor(colorEndMenu);
-		GradientDrawable gdMenu = new GradientDrawable(
-				GradientDrawable.Orientation.TOP_BOTTOM, new int[] {
-						cStartMenu, cEndMenu });
-		bgFooter.setBackgroundDrawable(gdMenu);
-		menuLayout.init();
-		flipper = (ViewFlipper) findViewById(R.id.flipper);
-		buttonMenu = (Button) findViewById(R.id.buttonMenu);
-		buttonMenu.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				flipper.setInAnimation(inFromRightAnimation());
-				flipper.setOutAnimation(outToLeftAnimation());
-				flipper.showNext();
-			}
-		});
-
-	}
-
-	private Animation inFromRightAnimation() {
-
-		Animation inFromRight = new TranslateAnimation(
-				Animation.RELATIVE_TO_PARENT, +1.0f,
-				Animation.RELATIVE_TO_PARENT, 0.0f,
-				Animation.RELATIVE_TO_PARENT, 0.0f,
-				Animation.RELATIVE_TO_PARENT, 0.0f);
-		inFromRight.setDuration(100);
-		inFromRight.setInterpolator(new AccelerateInterpolator());
-
-		return inFromRight;
-
-	}
-
-	private Animation outToLeftAnimation() {
-
-		Animation outtoLeft = new TranslateAnimation(
-				Animation.RELATIVE_TO_PARENT, 0.0f,
-				Animation.RELATIVE_TO_PARENT, -1.0f,
-				Animation.RELATIVE_TO_PARENT, 0.0f,
-				Animation.RELATIVE_TO_PARENT, 0.0f);
-		outtoLeft.setDuration(100);
-		outtoLeft.setInterpolator(new AccelerateInterpolator());
-
-		return outtoLeft;
+		UIUtils.setMenu(this);
 	}
 
 	@Override

@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.portfolio.R;
-import com.portfolio.utils.UIUtils;
+import com.portfolio.util.UIUtils;
 
 public class ContactItem extends LinearLayout {
 

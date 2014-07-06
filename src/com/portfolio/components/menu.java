@@ -21,7 +21,8 @@ import com.portfolio.activities.VideoActivity;
 import com.portfolio.model.PortfolioModel;
 import com.portfolio.model.interfaces.IMenu;
 import com.portfolio.model.interfaces.IPage;
-import com.portfolio.utils.UIUtils;
+import com.portfolio.model.interfaces.ITheme;
+import com.portfolio.util.UIUtils;
 
 public class menu extends LinearLayout {
 
@@ -35,7 +36,6 @@ public class menu extends LinearLayout {
 	}
 
 	public void init() {
-
 		Typeface tf = Typeface.createFromAsset(getContext().getAssets(),
 				"fonts/CopperGothicStd29AB.otf");
 		final PortfolioModel portfolioModel = PortfolioModel
@@ -44,14 +44,14 @@ public class menu extends LinearLayout {
 		List<Integer> posicion = (List<Integer>) portfolioModel
 				.getPagesPositions();
 		IMenu menu = PortfolioModel.getInstance(getContext()).getPorfolioMenu();
+		ITheme theme = PortfolioModel.getInstance(getContext()).getTheme();
+
 		for (int index = 0; index < titles.size(); index++) {
 			String title = titles.get(index);
 			int pos = posicion.get(index);
 			Button but = new Button(getContext());
-//			but.setBackgroundResource(R.drawable.custom_menu_1);
-//			but.setTextColor(getResources().getColor(R.color.borderGold));
 			UIUtils.setTextColor(but, menu.getText_color());
-			UIUtils.setGradient(but, menu.getBackground().getStartColor(), menu.getBackground().getEndColor(), String.valueOf(menu.getBackground().getAngle()));
+			UIUtils.setGradient(but, theme.getMenuItemBackground().getStartColor(), theme.getMenuItemBackground().getEndColor(), String.valueOf(theme.getMenuItemBackground().getAngle()));
 
 			but.setHeight(80);
 			but.setTypeface(tf);

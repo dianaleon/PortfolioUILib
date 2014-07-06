@@ -25,7 +25,6 @@
             android:layout_height="30dp"
             android:layout_marginTop="10dp"
             android:paddingLeft="10dp"
-            android:text="@string/tittle_app"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#FFFFFF"
             android:textSize="14sp"

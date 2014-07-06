@@ -3,7 +3,6 @@ package com.portfolio.components;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.widget.ImageView;
@@ -13,7 +12,7 @@ import android.widget.TextView;
 import com.portfolio.R;
 import com.portfolio.listener.IMediaListener;
 import com.portfolio.model.PortfolioModel;
-import com.portfolio.utils.UIUtils;
+import com.portfolio.util.UIUtils;
 
 public class CatalogoItem extends TableRow {
 

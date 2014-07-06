@@ -1,11 +1,10 @@
 package com.portfolio.activities;
 
-import com.portfolio.R;
-
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.Window;
 import android.widget.TextView;
+
+import com.portfolio.R;
 
 public class CustomThemeWindow extends Activity {
 	protected TextView title;

@@ -4,34 +4,23 @@ import java.util.List;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
-import android.widget.Button;
-import android.widget.ViewFlipper;
 
 import com.portfolio.R;
-import com.portfolio.components.menu;
 import com.portfolio.model.PortfolioModel;
 import com.portfolio.model.interfaces.IPhotoGaleryPage;
 import com.portfolio.model.interfaces.ITheme;
 import com.portfolio.model.interfaces.component.IImageObject;
 import com.portfolio.model.interfaces.component.IPageObject;
 import com.portfolio.model.interfaces.component.ITextObject;
+import com.portfolio.util.UIUtils;
 
 public class PhotoTextListTwoRowsActivity extends Activity {
-
-	private Button buttonMenu;
-	ViewFlipper flipper;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_photo_text_gridlist_2);
+//		setContentView(R.layout.activity_photo_text_gridlist_2);
 		Bundle bundle = this.getIntent().getExtras();
 		int position = bundle.getInt("position");
 
@@ -68,46 +57,7 @@ public class PhotoTextListTwoRowsActivity extends Activity {
 		}
 
 		// MENU
-		flipper = (ViewFlipper) findViewById(R.id.flipper);
-
-		final menu menuLayout = (menu) findViewById(R.id.layout_menu);
-		menuLayout.init();
-
-		buttonMenu = (Button) findViewById(R.id.buttonMenu);
-		buttonMenu.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				flipper.setInAnimation(inFromRightAnimation());
-				flipper.setOutAnimation(outToLeftAnimation());
-				flipper.showNext();
-			}
-		});
-	}
-
-	private Animation inFromRightAnimation() {
-
-		Animation inFromRight = new TranslateAnimation(
-				Animation.RELATIVE_TO_PARENT, +1.0f,
-				Animation.RELATIVE_TO_PARENT, 0.0f,
-				Animation.RELATIVE_TO_PARENT, 0.0f,
-				Animation.RELATIVE_TO_PARENT, 0.0f);
-		inFromRight.setDuration(100);
-		inFromRight.setInterpolator(new AccelerateInterpolator());
-
-		return inFromRight;
-
-	}
-
-	private Animation outToLeftAnimation() {
-
-		Animation outtoLeft = new TranslateAnimation(
-				Animation.RELATIVE_TO_PARENT, 0.0f,
-				Animation.RELATIVE_TO_PARENT, -1.0f,
-				Animation.RELATIVE_TO_PARENT, 0.0f,
-				Animation.RELATIVE_TO_PARENT, 0.0f);
-		outtoLeft.setDuration(100);
-		outtoLeft.setInterpolator(new AccelerateInterpolator());
-
-		return outtoLeft;
+		UIUtils.setMenu(this);
 	}
 
 	@Override
