@@ -45,8 +45,7 @@ public class HomeActivity extends Activity {
 
 	@Override
 	public void onBackPressed() {
-		super.onBackPressed();
-		overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+		android.os.Process.killProcess(android.os.Process.myPid());
 	}
 
 }
