@@ -48,17 +48,10 @@ public class ContactActivity extends Activity {
 				String type = contact.getSubtype();
 				if (type != null) {
 					ContactItem contactItem = new ContactItem(this);
-					if (type.equalsIgnoreCase(IContactPage.movil) || type.equalsIgnoreCase(IContactPage.telefono)) {
-						contactItem.fill(content, contact.getTextColor(),
+					contactItem.fill(content, contact.getTextColor(),
 								contact.getStartColorBackground(),
 								contact.getEndColorBackground(),
-								contact.getGradientOrientatio(), true);
-					} else {
-						contactItem.fill(content, contact.getTextColor(),
-								contact.getStartColorBackground(),
-								contact.getEndColorBackground(),
-								contact.getGradientOrientatio());						
-					}
+								contact.getGradientOrientatio(), type);
 					linearLayout.addView(contactItem);
 				}
 			}

@@ -16,6 +16,7 @@ import com.portfolio.activities.ContactActivity;
 import com.portfolio.activities.ImageActivity;
 import com.portfolio.activities.NetworkActivity;
 import com.portfolio.activities.PhotoGridActivity;
+import com.portfolio.activities.PhotoTextActivity;
 import com.portfolio.activities.PhotoTextGridListActivity;
 import com.portfolio.activities.VideoActivity;
 import com.portfolio.model.PortfolioModel;
@@ -123,7 +124,7 @@ public class menu extends LinearLayout {
 
 					if (layout.equalsIgnoreCase("photo_text")) {
 						Intent intent5 = new Intent(getContext(),
-								PhotoTextGridListActivity.class);
+								PhotoTextActivity.class);
 						intent5.putExtra("position", pos);
 						getContext().startActivity(intent5);
 					}

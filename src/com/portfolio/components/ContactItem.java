@@ -11,6 +11,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.portfolio.R;
+import com.portfolio.model.interfaces.IContactPage;
+import com.portfolio.model.interfaces.component.IContactObject;
 import com.portfolio.util.UIUtils;
 
 public class ContactItem extends LinearLayout {
@@ -41,15 +43,30 @@ public class ContactItem extends LinearLayout {
 
 	public void fill(final String content, String textColor,
 			String startColor, String endColor,
-			String orientation, boolean phone) {
+			String orientation, final String type) {
 		fill(content, textColor, startColor, endColor, orientation);
 		textView.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-		        String number = "tel:" + content.trim();
-			    Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse(number));
-		        v.getContext().startActivity(callIntent);
+				if (type.equalsIgnoreCase(IContactPage.movil) || type.equalsIgnoreCase(IContactPage.telefono)) {
+			        String number = "tel:" + content.trim();
+				    Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse(number));
+			        v.getContext().startActivity(callIntent);
+				}
+				if (type.equalsIgnoreCase(IContactPage.email)) {
+					Intent testIntent = new Intent(Intent.ACTION_VIEW);  
+					Uri data = Uri.parse("mailto:?subject=" + "Contacto" + "&to=" + content);  
+					testIntent.setData(data);  
+					v.getContext().startActivity(testIntent);
+
+				}
+				if (type.equalsIgnoreCase(IContactPage.web)) {
+					Uri uri = Uri.parse("http:/" + content);
+					Intent intent = new Intent(Intent.ACTION_VIEW,
+							uri);
+					v.getContext().startActivity(intent);
+				}
 			}
 		});
 	}
