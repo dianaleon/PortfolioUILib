@@ -58,12 +58,12 @@ public class UIUtils {
 				"fonts/CopperplateGothicStd 31BC.otf");
 		TextView customTittle = (TextView) ((Activity)context).findViewById(R.id.tittle_app);
 		customTittle.setTypeface(font1);
-		customTittle.setTextSize(22);
+		customTittle.setTextSize(25);
 		customTittle.setText(menu.getTitle());
 	
 		TextView customSubtittle = (TextView) ((Activity)context).findViewById(R.id.sub_tittle_app);
 		customSubtittle.setTypeface(font1);
-		customSubtittle.setTextSize(14);
+		customSubtittle.setTextSize(20);
 		customSubtittle.setTextScaleX(1);
 		customSubtittle.setText(menu.getSubtitle());
 	}

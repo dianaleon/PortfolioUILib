@@ -18,7 +18,7 @@
         android:textAllCaps="true"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#FFFFFF"
-        android:textSize="18sp" />
+        android:textSize="22sp" />
 
     <TextView
         android:id="@+id/sub_tittle_app"
@@ -28,6 +28,6 @@
         android:textAllCaps="true"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#2f3133"
-        android:textSize="12sp" />
+        android:textSize="18sp" />
 
 </LinearLayout>
