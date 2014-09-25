@@ -30,11 +30,11 @@
 		<nature>com.android.ide.eclipse.adt.AndroidNature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
+	<!-- <linkedResources>
 		<link>
 			<name>assets/Copperplate.dfont</name>
 			<type>1</type>
 			<location>/Users/dianaleon/Desktop/development/DISEÑO FINAL /Copperplate.dfont</location>
 		</link>
-	</linkedResources>
+	</linkedResources> -->
 </projectDescription>
