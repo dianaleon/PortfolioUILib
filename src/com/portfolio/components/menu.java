@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.View;
@@ -135,6 +136,17 @@ public class menu extends LinearLayout {
 				}
 			});
 			LinearLayout linear = (LinearLayout) findViewById(R.id.layout);
+			linear.setBackgroundColor(Color.parseColor(menu.getText_color()));
+			LayoutParams params = new LayoutParams(
+			        LayoutParams.MATCH_PARENT,      
+			        LayoutParams.WRAP_CONTENT
+			);
+			if (index == (titles.size() - 1)) {
+				params.setMargins(0, 3, 0, 3);
+			} else {
+				params.setMargins(0, 3, 0, 0);				
+			}
+			but.setLayoutParams(params);
 			linear.addView(but);
 		}
 
