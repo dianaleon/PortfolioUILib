@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
@@ -16,7 +17,7 @@ import com.portfolio.model.interfaces.component.IPageObject;
 import com.portfolio.model.interfaces.component.ITextObject;
 import com.portfolio.util.UIUtils;
 
-public class PhotoTextGridListActivity extends Activity {
+public class PhotoTextGridListActivity extends BaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -25,14 +26,16 @@ public class PhotoTextGridListActivity extends Activity {
 		setContentView(R.layout.activity_photo_text_grid_list_layout);
 		Bundle bundle = this.getIntent().getExtras();
 		int position = bundle.getInt("position");
+		
+		loadHeader(page);
+		loadFooter();
 
 		// levanto la pagina de esa posicion
 		// la interfaz que se llama text, que tiene imagen, titulo y texto
 		IPhotoTxtGridListPage listPage = (IPhotoTxtGridListPage) PortfolioModel
 				.getInstance(this).getPageInfo(position);
 
-		// Setear el titulo en la pagina
-		UIUtils.setHeader(this);
+	
 
 		// cargar el layout
 		LinearLayout linearLayout = (LinearLayout) findViewById(R.id.list_of_rows);
@@ -70,5 +73,10 @@ public class PhotoTextGridListActivity extends Activity {
 	public void onBackPressed() {
 		super.onBackPressed();
 		overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+	}
+	
+	@Override
+	public void onContentVisible() {
+		headerView.setVisibility(View.VISIBLE);
 	}
 }

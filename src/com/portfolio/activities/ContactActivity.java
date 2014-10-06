@@ -4,11 +4,16 @@ import java.util.List;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.LinearLayout;
 
 import com.portfolio.R;
 import com.portfolio.components.ContactItem;
+import com.portfolio.listener.IMediaListener;
 import com.portfolio.model.PortfolioModel;
 import com.portfolio.model.interfaces.IContactPage;
 import com.portfolio.model.interfaces.component.IContactObject;
@@ -16,7 +21,7 @@ import com.portfolio.model.interfaces.component.IPageObject;
 import com.portfolio.util.UIUtils;
 
 @SuppressLint("ResourceAsColor")
-public class ContactActivity extends Activity {
+public class ContactActivity extends BaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +30,8 @@ public class ContactActivity extends Activity {
 		setContentView(R.layout.activity_contacto_layout);
 		Bundle bundle = this.getIntent().getExtras();
 		int position = bundle.getInt("position");
+		loadHeader(page);
+		loadFooter();
 
 		// levanto la pagina de esa posicion
 		// la interfaz que se llama contact, que tiene una lista de url + nombre
@@ -32,10 +39,10 @@ public class ContactActivity extends Activity {
 		IContactPage contactPage = (IContactPage) PortfolioModel.getInstance(
 				this).getPageInfo(position);
 
-		UIUtils.setHeader(this);
+		//UIUtils.setHeader(this);
 
 		// cargar el layout
-		LinearLayout linearLayout = (LinearLayout) findViewById(R.id.layout_content);
+		final LinearLayout linearLayout = (LinearLayout) findViewById(R.id.layout_content);
 		UIUtils.setGradient(linearLayout, contactPage.getType().getBackground().getStartColor(), contactPage.getType().getBackground().getEndColor(), String.valueOf(contactPage.getType().getBackground().getAngle()));
 
 		List<IPageObject> objetos = contactPage.getObjects();
@@ -56,9 +63,30 @@ public class ContactActivity extends Activity {
 				}
 			}
 		}
+		
+		
+		 UIUtils.setGradient(linearLayout, contactPage.getType().getBackground());
+		    
+		  if ((theme.getHomeImage() != null) && (!theme.getHomeImage().equalsIgnoreCase("")))
+		
+			PortfolioModel.getInstance(this).getMedia(new IMediaListener() {
+				@Override
+				public void onImageReady(Bitmap bitmap) {
+					Drawable drawable = new BitmapDrawable(getResources(), bitmap);
+					//linear.setBackgroundColor(Color.TRANSPARENT);
+					linearLayout.setBackgroundDrawable(drawable);
+					
+				}
+
+			}, theme.getHomeImage());
 
 		// MENU
 		UIUtils.setMenu(this);
+	}
+	
+	@Override
+	public void onContentVisible() {
+		headerView.setVisibility(View.VISIBLE);
 	}
 
 	@Override

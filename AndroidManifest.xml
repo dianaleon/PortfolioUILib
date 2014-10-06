@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="11"
         android:targetSdkVersion="18" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -17,7 +17,7 @@
         android:allowBackup="true"
         android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
         <activity
-            android:name="com.portfolio.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -52,6 +52,18 @@
         <activity android:name=".activities.VideoActivity" >
         </activity>
         <activity android:name=".activities.CatalogoActivity" >
+        </activity>
+        <activity android:name=".activities.TextTextGridListActivity" >
+        </activity>
+        <activity android:name=".activities.HomeActivity2" >
+        </activity>
+        <activity
+            android:name=".activities.AccordionPhotoActivity"
+            android:label="@string/title_activity_accordion_photo" >
+        </activity>
+        <activity
+            android:name="com.portfolio.activities.AccordionTextActivity"
+            android:label="@string/title_activity_accordion_text" >
         </activity>
     </application>
 

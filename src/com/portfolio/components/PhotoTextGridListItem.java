@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import android.widget.TableRow;
 import android.widget.TextView;
 
@@ -48,6 +49,7 @@ public class PhotoTextGridListItem extends TableRow {
 			
 			@Override
 			public void onImageReady(Bitmap bitmap) {
+				imageView.setScaleType(ScaleType.CENTER_CROP);
 				imageView.setImageBitmap(bitmap);
 			}
 			

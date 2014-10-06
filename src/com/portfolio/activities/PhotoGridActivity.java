@@ -75,7 +75,7 @@ public class PhotoGridActivity extends Activity {
 			}
 		}
 
-		TextView tittleTextView = (TextView) findViewById(R.id.tittle);
+		TextView tittleTextView = (TextView) findViewById(R.id.content);
 		UIUtils.setTextColor(tittleTextView, textColor);
 		UIUtils.setGradient(tittleTextView, startColor, endColor, gradientColor);
 		tittleTextView.setText(title);
