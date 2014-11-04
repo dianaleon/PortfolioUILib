@@ -50,7 +50,8 @@ public class VideoActivity extends Activity {
 		}
 
 		// MENU
-		final menu menuLayout = (menu) findViewById(R.id.layout_menu);
-		menuLayout.init();
+//		final menu menuLayout = (menu) findViewById(R.id.layout_menu);
+//		menuLayout.init();
+		UIUtils.setMenu(this);
 	}
 }

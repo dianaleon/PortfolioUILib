@@ -33,7 +33,6 @@ public class NetworkActivity extends BaseActivity {
 	String addressinstagram = null;
 	String addresspinterest = null;
 	String addresslinkedin = null;
-	String address = null;
 	final int ICON_SIZE = 250;
 
 	@Override
@@ -71,13 +70,13 @@ public class NetworkActivity extends BaseActivity {
 			IPageObject object = objetos.get(index);
 			String content = object.getContent();
 			final ImageButton but = new ImageButton(this);
-			but.setLayoutParams(new LayoutParams(50, 50));
+			//but.setLayoutParams(new LayoutParams(100, 100));
 			but.setAdjustViewBounds(true);
 			but.setScaleType(ImageView.ScaleType.CENTER_CROP);
 			but.setBackgroundColor(Color.TRANSPARENT);
 
 			// Generico
-			address = content;
+			final String address = content;
 			PortfolioModel.getInstance(this).getMedia(new IMediaListener() {
 				@Override
 				public void onImageReady(Bitmap bitmap) {
@@ -196,8 +195,18 @@ public class NetworkActivity extends BaseActivity {
 
 			TableRow.LayoutParams params = new TableRow.LayoutParams(ICON_SIZE,
 					ICON_SIZE);
-			params.leftMargin = 40;
-			params.rightMargin = 40;
+			
+			
+			if((index%2)==0){
+				params.leftMargin = 20;
+				params.rightMargin = 10;
+			}
+			else
+			{
+				params.leftMargin = 10;
+				params.rightMargin = 20;
+			}
+					
 
 			if (index < 2) {
 				TableRow board = (TableRow) findViewById(R.id.tableRow1);

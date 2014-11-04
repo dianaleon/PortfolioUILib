@@ -32,6 +32,8 @@ import com.portfolio.model.interfaces.IMenu;
 import com.portfolio.model.interfaces.ITheme;
 
 public class UIUtils {
+	
+	private static MenuBuilder menuBuilder;
 
 	public static void setGradient(View view, BackgroundObject background) {
 		UIUtils.setGradient(view, background.getStartColor(),
@@ -109,7 +111,7 @@ public class UIUtils {
 		IMenu menu = PortfolioModel.getInstance(context).getPorfolioMenu();
 		final menu menuLayout = (menu) ((Activity) context)
 				.findViewById(R.id.layout_menu);
-		menuLayout.init();
+		menuLayout.init(UIUtils.getMenuBuilder());
 
 		final LinearLayout bgFooter = (LinearLayout) ((Activity) context)
 				.findViewById(R.id.layout_footer);
@@ -177,5 +179,15 @@ public class UIUtils {
 		outtoLeft.setInterpolator(new AccelerateInterpolator());
 
 		return outtoLeft;
+	}
+
+	public static MenuBuilder getMenuBuilder() {
+		if(menuBuilder == null)
+			menuBuilder = new MenuBuilder1();
+		return menuBuilder;
+	}
+
+	public static void setMenuBuilder(MenuBuilder menuBuilder) {
+		UIUtils.menuBuilder = menuBuilder;
 	}
 }

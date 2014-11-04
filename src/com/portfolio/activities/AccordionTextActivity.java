@@ -63,6 +63,8 @@ public class AccordionTextActivity extends BaseActivity {
 				listDataChild, objetos);
 
 		// setting list adapter
+		final ImageView accordionBanner = new ImageView(this);
+		expListView.addHeaderView(accordionBanner);
 		expListView.setAdapter(listAdapter);
 
 		// Set background Image
@@ -83,7 +85,7 @@ public class AccordionTextActivity extends BaseActivity {
 
 			}, theme.getHomeImage());
 
-		final ImageView accordionBanner = new ImageView(this);
+		
 		AbsListView.LayoutParams layoutParams = new AbsListView.LayoutParams(
 				LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 		accordionBanner.setLayoutParams(layoutParams);
@@ -92,7 +94,7 @@ public class AccordionTextActivity extends BaseActivity {
 			@Override
 			public void onImageReady(Bitmap bitmap) {
 				accordionBanner.setImageBitmap(bitmap);
-				expListView.addHeaderView(accordionBanner);
+				
 			}
 
 		}, netPage.getContent());
