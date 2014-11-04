@@ -10,7 +10,9 @@
     android:scrollbars="vertical"
     android:visibility="invisible"
    >
-
+    <ScrollView 
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent" >
     <LinearLayout
         android:id="@+id/layout"
         android:layout_width="match_parent"
@@ -21,5 +23,6 @@
         android:scrollbars="vertical" >
 
       </LinearLayout>
+    </ScrollView>
 
 </com.portfolio.components.menu>
