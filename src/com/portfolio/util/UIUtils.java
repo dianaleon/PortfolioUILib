@@ -1,6 +1,7 @@
 package com.portfolio.util;
 
 import android.app.Activity;
+
 import android.app.Fragment;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -8,6 +9,8 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.GradientDrawable.Orientation;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.AccelerateInterpolator;
@@ -15,9 +18,11 @@ import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
+import android.widget.LinearLayout.LayoutParams;
 
 import com.portfolio.R;
 import com.portfolio.activities.BaseActivity;
@@ -34,6 +39,7 @@ import com.portfolio.model.interfaces.ITheme;
 public class UIUtils {
 	
 	private static MenuBuilder menuBuilder;
+	public static DisplayMetrics appMetrics;
 
 	public static void setGradient(View view, BackgroundObject background) {
 		UIUtils.setGradient(view, background.getStartColor(),
@@ -124,11 +130,23 @@ public class UIUtils {
 				.findViewById(R.id.flipper);
 		final ImageButton buttonMenu = (ImageButton) ((Activity) context)
 				.findViewById(R.id.buttonMenu);
-
+		LayoutParams params = (LayoutParams) buttonMenu.getLayoutParams();
+		//params.width = getDimension(getDimension(100));
+		//params.height =getDimension(getDimension(100));
+		//params.bottomMargin = 5;
+		//params.topMargin = 5;
+		params.weight = 1;		
+				
+				//new LayoutParams(UIUtils.getDimension(50),UIUtils.getDimension(50));
+		
+		buttonMenu.setLayoutParams(params);
+		buttonMenu.setScaleType(ScaleType.FIT_CENTER);
 		PortfolioModel.getInstance(context).getMedia(new IMediaListener() {
 			@Override
 			public void onImageReady(Bitmap bitmap) {
+				
 				buttonMenu.setImageBitmap(bitmap);
+				
 				bgFooter.invalidate();
 			}
 
@@ -189,5 +207,13 @@ public class UIUtils {
 
 	public static void setMenuBuilder(MenuBuilder menuBuilder) {
 		UIUtils.menuBuilder = menuBuilder;
+	}
+	
+	public static int getDimension(int size){
+		return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,size,UIUtils.appMetrics);	
+	}
+	
+	public static void setAppMetrics(DisplayMetrics dm){
+		UIUtils.appMetrics = dm;
 	}
 }

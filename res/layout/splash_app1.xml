@@ -33,19 +33,11 @@
             android:gravity="top|center_horizontal"
             android:orientation="vertical" >
 
-            <ViewFlipper
-                android:id="@+id/flipper"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent" >
-
-               <!--  <include
+               <include
                     android:id="@+id/layout_content"
-                    layout="@layout/body_image" /> -->
+                    layout="@layout/body_image" /> 
 
-                <include
-                    android:id="@+id/layout_menu"
-                    layout="@layout/menu_layout" />
-            </ViewFlipper>
+                
         </LinearLayout>
     </LinearLayout>
 

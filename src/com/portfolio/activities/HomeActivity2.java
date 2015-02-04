@@ -25,15 +25,17 @@ public class HomeActivity2 extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+       
+		UIUtils.setAppMetrics(getResources().getDisplayMetrics());
+
 		// la vista de la home. Layout:image (json pos 3)
 		setContentView(R.layout.activity_home_layout2);
 		
 
 		// cargar info
-		ITheme iTheme = PortfolioModel.getInstance(this).getTheme();
-		IMenu iMenu = PortfolioModel.getInstance(this).getPorfolioMenu();
-		IGeneralInfo iInfo = PortfolioModel.getInstance(this).getGeneralInformation();
+	//	ITheme iTheme = PortfolioModel.getInstance(this).getTheme();
+		//IMenu iMenu = PortfolioModel.getInstance(this).getPorfolioMenu();
+		//IGeneralInfo iInfo = PortfolioModel.getInstance(this).getGeneralInformation();
 		
 		// cargar el layout con el contenido del json
 		// Image to set as the home page

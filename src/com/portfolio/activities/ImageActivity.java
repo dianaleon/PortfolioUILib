@@ -28,6 +28,7 @@ public class ImageActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
+		UIUtils.setAppMetrics(getResources().getDisplayMetrics());
 
 		// la vista de la home. Layout:image (json pos 3)
 		setContentView(R.layout.activity_image_layout);

@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -77,10 +78,16 @@ public class PhotoGridActivity extends Activity {
 
 		TextView tittleTextView = (TextView) findViewById(R.id.content);
 		UIUtils.setTextColor(tittleTextView, textColor);
+		Typeface font1 = Typeface.createFromAsset(this.getAssets(),
+				"fonts/CopperplateGothicStd 31BC.otf");
+		tittleTextView.setTypeface(font1);
 		UIUtils.setGradient(tittleTextView, startColor, endColor, gradientColor);
 		tittleTextView.setText(title);
 
 		TextView contentTextView = (TextView) findViewById(R.id.text_page_item);
+		UIUtils.setGradient(contentTextView, textColor, textColor, gradientColor);
+		UIUtils.setTextColor(contentTextView, startColor);
+
 		contentTextView.setText(content);
 
 		// MENU

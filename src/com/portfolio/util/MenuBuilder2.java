@@ -76,7 +76,7 @@ public class MenuBuilder2 implements MenuBuilder {
 					String.valueOf(item.getAngle()));
 
 //			but.setHeight(104);
-//			but.setTypeface(tf);
+    		
 //			but.setText(page.getTitle()+"2");
 			final ImageView itemImage = (ImageView)but.findViewById(R.id.itemImage);
 			
@@ -92,6 +92,7 @@ public class MenuBuilder2 implements MenuBuilder {
 			TextView itemText = (TextView)but.findViewById(R.id.itemText);
 			itemText.setText(page.getTitle());
 			but.setTag(pos);
+			
 			but.setOnClickListener(new OnClickListener() {
 
 				@Override
@@ -208,7 +209,7 @@ public class MenuBuilder2 implements MenuBuilder {
 						}, theme.getHomeImage());
 
 			LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT,
-					104);
+					UIUtils.getDimension(70));
 			if (index == (titles.size() - 1)) {
 				params.setMargins(0, 0, 0, 0);
 			} else {

@@ -12,8 +12,10 @@ import android.app.ActionBar.LayoutParams;
 import android.app.Fragment;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.Paint.Align;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.Layout.Alignment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -21,6 +23,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
@@ -54,11 +57,25 @@ public class HeaderButtonTextFragment extends HeaderFragment {
 
 		final ImageButton customButton = (ImageButton) header.findViewById(R.id.header_button);
 		customButton.setBackgroundColor(Color.TRANSPARENT);
+		 //RelativeLayout.LayoutParams butLayoutParams1 = (RelativeLayout.LayoutParams) customButton.getLayoutParams();
+		//butLayoutParams1.leftMargin = UIUtils.getDimension(20);
+		//butLayoutParams1.width =UIUtils.getDimension(200);
+		//butLayoutParams1.height =UIUtils.getDimension(100);
+		// customButton.setLayoutParams(butLayoutParams1);
+
 		
 		portfolioModel.getMedia(new IMediaListener() {
 			@Override
 			public void onImageReady(Bitmap bitmap) {
+				int width = UIUtils.getDimension(bitmap.getWidth());
+				int height =  UIUtils.getDimension(bitmap.getHeight());
+				
+				//RelativeLayout.LayoutParams params = new  RelativeLayout.LayoutParams(width, height);
+				//params.leftMargin = UIUtils.getDimension(30); 
+				//customButton.setLayoutParams(params);
+
 				customButton.setImageBitmap(bitmap);
+
 			}
 
 		}, menu.getItemIcon());
@@ -87,7 +104,7 @@ public class HeaderButtonTextFragment extends HeaderFragment {
 		customSubtittle.setTextScaleX(1);
 		customSubtittle.setText(page.getTitle());
 		customSubtittle.setTextColor(Color.parseColor(menu.getText_color()));
-
+        
 		return header;
 	}
 	

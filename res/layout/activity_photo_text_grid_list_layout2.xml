@@ -28,8 +28,8 @@
             android:id="@+id/body"
             android:layout_width="match_parent"
             android:layout_height="10dp"
-            android:layout_gravity="center_vertical|center_horizontal"
             android:layout_weight="7.0"
+            android:background="#000"
             android:gravity="top|center_horizontal"
             android:orientation="vertical" >
 
@@ -38,9 +38,9 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent" >
 
-               <!--  <include
+                <include
                     android:id="@+id/layout_content"
-                    layout="@layout/body_image" /> -->
+                    layout="@layout/body_photo_text_grid_list" />
 
                 <include
                     android:id="@+id/layout_menu"
@@ -57,7 +57,7 @@
         <include
             android:id="@+id/layout_footer"
             android:layout_width="match_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             layout="@layout/footer_layout" />
     </LinearLayout>
 

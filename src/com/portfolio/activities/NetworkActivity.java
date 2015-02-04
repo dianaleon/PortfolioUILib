@@ -3,6 +3,7 @@ package com.portfolio.activities;
 import java.util.List;
 
 import android.app.ActionBar.LayoutParams;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -10,8 +11,11 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TableLayout;
@@ -33,7 +37,7 @@ public class NetworkActivity extends BaseActivity {
 	String addressinstagram = null;
 	String addresspinterest = null;
 	String addresslinkedin = null;
-	final int ICON_SIZE = 250;
+	final int ICON_SIZE = 100;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +74,6 @@ public class NetworkActivity extends BaseActivity {
 			IPageObject object = objetos.get(index);
 			String content = object.getContent();
 			final ImageButton but = new ImageButton(this);
-			//but.setLayoutParams(new LayoutParams(100, 100));
 			but.setAdjustViewBounds(true);
 			but.setScaleType(ImageView.ScaleType.CENTER_CROP);
 			but.setBackgroundColor(Color.TRANSPARENT);
@@ -192,19 +195,22 @@ public class NetworkActivity extends BaseActivity {
 			// }
 			//
 			// }
-
-			TableRow.LayoutParams params = new TableRow.LayoutParams(ICON_SIZE,
-					ICON_SIZE);
 			
+			int tableRowParams = UIUtils.getDimension(ICON_SIZE);
+			
+			TableRow.LayoutParams params = new TableRow.LayoutParams(tableRowParams,tableRowParams);
+			
+            int margin_20 = UIUtils.getDimension(20);
+            int margin_10 = UIUtils.getDimension(10);
 			
 			if((index%2)==0){
-				params.leftMargin = 20;
-				params.rightMargin = 10;
+				params.leftMargin = Math.round(margin_20);
+				params.rightMargin = Math.round(margin_10);
 			}
 			else
 			{
-				params.leftMargin = 10;
-				params.rightMargin = 20;
+				params.leftMargin = Math.round(margin_10);
+				params.rightMargin = Math.round(margin_20);
 			}
 					
 
@@ -264,5 +270,7 @@ public class NetworkActivity extends BaseActivity {
 	public void onContentVisible() {
 		headerView.setVisibility(View.VISIBLE);
 	}
+	
+	
 
 }

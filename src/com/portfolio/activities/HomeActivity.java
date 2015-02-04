@@ -21,22 +21,22 @@ public class HomeActivity extends Activity {
 		
 		// la vista de la home. Layout:image (json pos 3)
 		setContentView(R.layout.activity_home_layout);
-
+        UIUtils.setAppMetrics(getResources().getDisplayMetrics());
 		// cargar info
 		ITheme iTheme = PortfolioModel.getInstance(this).getTheme();
 		
 		// cargar el layout con el contenido del json
 		// Image to set as the home page
-		LinearLayout linearLayout = (LinearLayout) findViewById(R.id.layout_content);
-		final ImageView imageView = (ImageView) linearLayout
-				.findViewById(R.id.imageView1);
-		// Fill Content
-		PortfolioModel.getInstance(this).getMedia(new IMediaListener() {
-			@Override
-			public void onImageReady(Bitmap bitmap) {
-				imageView.setImageBitmap(bitmap);
-			}
-		}, iTheme.getHomeImage());
+//		LinearLayout linearLayout = (LinearLayout) findViewById(R.id.layout_content);
+//		final ImageView imageView = (ImageView) linearLayout
+//				.findViewById(R.id.imageView1);
+//		// Fill Content
+//		PortfolioModel.getInstance(this).getMedia(new IMediaListener() {
+//			@Override
+//			public void onImageReady(Bitmap bitmap) {
+//				imageView.setImageBitmap(bitmap);
+//			}
+//		}, iTheme.getHomeImage());
 
 		UIUtils.setHeader(this);
 

@@ -4,25 +4,33 @@ import java.util.List;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.portfolio.R;
 import com.portfolio.activities.AccordionPhotoActivity;
 import com.portfolio.activities.AccordionTextActivity;
 import com.portfolio.activities.CatalogoActivity;
 import com.portfolio.activities.ContactActivity;
+import com.portfolio.activities.ContactActivity2;
 import com.portfolio.activities.ImageActivity;
 import com.portfolio.activities.NetworkActivity;
+import com.portfolio.activities.NetworkActivity2;
 import com.portfolio.activities.PhotoGridActivity;
 import com.portfolio.activities.PhotoTextActivity;
 import com.portfolio.activities.PhotoTextGridListActivity;
+import com.portfolio.activities.PhotoTextGridListActivity2;
 import com.portfolio.activities.TextTextGridListActivity;
 import com.portfolio.activities.VideoActivity;
 import com.portfolio.components.menu;
@@ -49,23 +57,28 @@ public class MenuBuilder1 implements MenuBuilder {
 				.getPorfolioMenu();
 		ITheme theme = PortfolioModel.getInstance(baseMenu.getContext())
 				.getTheme();
-		// IPage pages =
-		// PortfolioModel.getInstance(getContext()).getPageInfo(0).get;
+		
 
 		for (int index = 0; index < posicion.size(); index++) {
 			int pos = posicion.get(index);
-
-			Button but = new Button(baseMenu.getContext());
-			UIUtils.setTextColor(but, menu.getText_color());
+			
+			 
+					
+			LayoutInflater inflater = LayoutInflater.from(baseMenu.getContext());
+			View but= inflater.inflate(R.layout.menu1_item, null, false);
+		
 			IPage page = PortfolioModel.getInstance(baseMenu.getContext())
 					.getPageInfo(pos);
 			BackgroundObject item = page.getType().getBackground();
 			UIUtils.setGradient(but, item.getStartColor(), item.getEndColor(),
 					String.valueOf(item.getAngle()));
 
-			but.setHeight(104);
-			but.setTypeface(tf);
-			but.setText(page.getTitle());
+
+			
+			TextView itemText = (TextView)but.findViewById(R.id.itemText);
+			itemText.setText(page.getTitle());
+			itemText.setTypeface(tf);
+			itemText.setTextColor(Color.parseColor(menu.getText_color()));
 			but.setTag(pos);
 			but.setOnClickListener(new OnClickListener() {
 
@@ -82,21 +95,21 @@ public class MenuBuilder1 implements MenuBuilder {
 					}
 					if (layout.equalsIgnoreCase("redesSociales")) {
 						Intent intent3 = new Intent(baseMenu.getContext(),
-								NetworkActivity.class);
+								NetworkActivity2.class);
 						intent3.putExtra("position", pos);
 						baseMenu.getContext().startActivity(intent3);
 
 					}
 					if (layout.equalsIgnoreCase("contacto")) {
 						Intent intent6 = new Intent(baseMenu.getContext(),
-								ContactActivity.class);
+								ContactActivity2.class);
 						intent6.putExtra("position", pos);
 						baseMenu.getContext().startActivity(intent6);
 					}
 
 					if (layout.equalsIgnoreCase("photo_text_gridlist")) {
 						Intent intent = new Intent(baseMenu.getContext(),
-								PhotoTextGridListActivity.class);
+								PhotoTextGridListActivity2.class);
 						intent.putExtra("position", pos);
 						baseMenu.getContext().startActivity(intent);
 					}
@@ -166,29 +179,34 @@ public class MenuBuilder1 implements MenuBuilder {
 
 			UIUtils.setGradient(baseMenu, menu.getBackground());
 
-			if ((theme.getHomeImage() != null)
-					&& (!theme.getHomeImage().equalsIgnoreCase("")))
-
-				PortfolioModel.getInstance(baseMenu.getContext()).getMedia(
-						new IMediaListener() {
-							@Override
-							public void onImageReady(Bitmap bitmap) {
-								Drawable drawable = new BitmapDrawable(
-										baseMenu.getResources(), bitmap);
-								// linear.setBackgroundColor(Color.TRANSPARENT);
-								baseMenu.setBackgroundDrawable(drawable);
-
-							}
-
-						}, theme.getHomeImage());
+//			if ((theme.getHomeImage() != null)
+//					&& (!theme.getHomeImage().equalsIgnoreCase("")))
+//
+//				PortfolioModel.getInstance(baseMenu.getContext()).getMedia(
+//						new IMediaListener() {
+//							@Override
+//							public void onImageReady(Bitmap bitmap) {
+//								Drawable drawable = new BitmapDrawable(
+//										baseMenu.getResources(), bitmap);
+//								// linear.setBackgroundColor(Color.TRANSPARENT);
+//								baseMenu.setBackgroundDrawable(drawable);
+//
+//							}
+//
+//						}, theme.getHomeImage());
 
 			LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT,
-					LayoutParams.WRAP_CONTENT);
-			if (index == (titles.size() - 1)) {
-				params.setMargins(0, 0, 0, 0);
-			} else {
-				params.setMargins(0, 0, 0, 0);
+					UIUtils.getDimension(70));
+			if (index == (titles.size() - 1) ) {
+				params.setMargins(0,2,0,0);
+			}else{
+				if(index == 0)
+					params.setMargins(0,0,2,0);
+				else {
+						params.setMargins(0,2, 0,0);
+					}
 			}
+		   
 			but.setLayoutParams(params);
 			linear.addView(but);
 		}
