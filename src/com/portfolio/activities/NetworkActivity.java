@@ -97,104 +97,7 @@ public class NetworkActivity extends BaseActivity {
 				}
 			});
 
-			// switch (object.getType()) {
-			//
-			// case IPageObject.type_network:
-			// INetworkObject social = (INetworkObject) object;
-			// String type = social.getSubtype();
-			// if (type != null) {
-			// if (type.equalsIgnoreCase(INetworkPage.facebook)) {
-			// addressfb = content;
-			// but.setImageResource(R.drawable.fb);
-			//
-			//
-			// // but.setTag(pos);
-			// but.setOnClickListener(new OnClickListener() {
-			// public void onClick(View v) {
-			// Uri uri = Uri.parse(addressfb);
-			// Intent intent = new Intent(Intent.ACTION_VIEW,
-			// uri);
-			// startActivity(intent);
-			// }
-			// });
-			// }
-			//
-			// if (type.equalsIgnoreCase(INetworkPage.twitter)) {
-			//
-			// addresstwitter = content;
-			// but.setImageResource(R.drawable.twitter);
-			//
-			// // but.setTag(pos);
-			// but.setOnClickListener(new OnClickListener() {
-			// public void onClick(View v) {
-			// Uri uri = Uri.parse(addresstwitter);
-			// Intent intent = new Intent(Intent.ACTION_VIEW,
-			// uri);
-			// startActivity(intent);
-			// }
-			// });
-			// }
-			//
-			// if (type.equalsIgnoreCase(INetworkPage.gplus)) {
-			//
-			// addressgplus = content;
-			// but.setImageResource(R.drawable.gplus);
-			//
-			// // but.setTag(pos);
-			// but.setOnClickListener(new OnClickListener() {
-			// public void onClick(View v) {
-			// Uri uri = Uri.parse(addressgplus);
-			// Intent intent = new Intent(Intent.ACTION_VIEW,
-			// uri);
-			// startActivity(intent);
-			// }
-			// });
-			// }
-			// if (type.equalsIgnoreCase(INetworkPage.instagram)) {
-			//
-			// addressinstagram = content;
-			// but.setImageResource(R.drawable.instagram);
-			// // but.setTag(pos);
-			// but.setOnClickListener(new OnClickListener() {
-			// public void onClick(View v) {
-			// Uri uri = Uri.parse(addressinstagram);
-			// Intent intent = new Intent(Intent.ACTION_VIEW,
-			// uri);
-			// startActivity(intent);
-			// }
-			// });
-			// }
-			// if (type.equalsIgnoreCase(INetworkPage.pinterest)) {
-			//
-			// addresspinterest = content;
-			// but.setImageResource(R.drawable.pinterest);
-			// // but.setTag(pos);
-			// but.setOnClickListener(new OnClickListener() {
-			// public void onClick(View v) {
-			// Uri uri = Uri.parse(addresspinterest);
-			// Intent intent = new Intent(Intent.ACTION_VIEW,
-			// uri);
-			// startActivity(intent);
-			// }
-			// });
-			// }
-			// if (type.equalsIgnoreCase(INetworkPage.linkedin)) {
-			//
-			// addresslinkedin = content;
-			// but.setImageResource(R.drawable.lin);
-			// // but.setTag(pos);
-			// but.setOnClickListener(new OnClickListener() {
-			// public void onClick(View v) {
-			// Uri uri = Uri.parse(addresslinkedin);
-			// Intent intent = new Intent(Intent.ACTION_VIEW,
-			// uri);
-			// startActivity(intent);
-			// }
-			// });
-			// }
-			// }
-			//
-			// }
+			
 			
 			int tableRowParams = UIUtils.getDimension(ICON_SIZE);
 			
@@ -270,6 +173,47 @@ public class NetworkActivity extends BaseActivity {
 	public void onContentVisible() {
 		headerView.setVisibility(View.VISIBLE);
 	}
+	
+	
+	private void fillSocialNetworkTable(int itemsCount,ImageButton but)
+	{
+		//Boton de relleno
+		ImageButton butFill = new ImageButton(this);
+		butFill.setAdjustViewBounds(true);
+		butFill.setScaleType(ImageView.ScaleType.CENTER_CROP);
+		butFill.setBackgroundColor(Color.TRANSPARENT);
+		butFill.setVisibility(View.INVISIBLE);
+		//
+		int tableRowParams = UIUtils.getDimension(ICON_SIZE);		
+		TableRow.LayoutParams params = new TableRow.LayoutParams(tableRowParams,tableRowParams);
+		switch (itemsCount) {
+		case 1:
+			TableRow board2 = (TableRow) findViewById(R.id.tableRow2);
+			board2.addView(butFill, params);
+			board2.addView(but, params);
+			board2.addView(butFill, params);
+			break;
+		case 2:
+
+			break;
+		case 3:
+
+			break;
+		case 4:
+
+			break;
+		case 5:
+
+			break;
+			
+
+
+		default:
+			break;
+		}
+	}
+	
+	
 	
 	
 
