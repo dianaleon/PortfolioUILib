@@ -2,7 +2,9 @@ package com.portfolio.activities;
 
 import java.util.List;
 
+import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -47,6 +49,9 @@ public class CatalogoActivity extends Activity {
 				catalogoPage.getType().getBackground().getEndColor(),
 				String.valueOf(catalogoPage.getType().getBackground()
 						.getAngle()));
+		linearLayout.setBackgroundColor(Color.parseColor("#000000"));
+		
+
 		for (int index = 0; index < objetos.size(); index++) {
 			IPageObject object = objetos.get(index);
 			switch (object.getType()) {

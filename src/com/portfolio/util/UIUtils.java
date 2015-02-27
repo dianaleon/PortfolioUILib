@@ -131,11 +131,8 @@ public class UIUtils {
 		final ImageButton buttonMenu = (ImageButton) ((Activity) context)
 				.findViewById(R.id.buttonMenu);
 		LayoutParams params = (LayoutParams) buttonMenu.getLayoutParams();
-		//params.width = getDimension(getDimension(100));
-		//params.height =getDimension(getDimension(100));
-		//params.bottomMargin = 5;
-		//params.topMargin = 5;
-		params.weight = 1;		
+		//params.weight = (float) 0.5;	
+		
 				
 				//new LayoutParams(UIUtils.getDimension(50),UIUtils.getDimension(50));
 		

@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 
 import com.portfolio.R;
 import com.portfolio.components.ContactItem;
+import com.portfolio.components.ContactItem2;
 import com.portfolio.listener.IMediaListener;
 import com.portfolio.model.PortfolioModel;
 import com.portfolio.model.interfaces.IContactPage;

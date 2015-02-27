@@ -42,7 +42,7 @@ public class NetworkActivity2 extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_network_layout2);
@@ -57,10 +57,9 @@ public class NetworkActivity2 extends Activity {
 		// caragr info
 		List<IPageObject> objetos = netPage.getObjects();
 
-		 UIUtils.setHeader(this);
+		UIUtils.setHeader(this);
 
 		final TableLayout tableLayout = (TableLayout) findViewById(R.id.layout_content);
-	
 
 		// recorro los objetos del json
 		for (int index = 0; index < objetos.size(); index++) {
@@ -90,28 +89,10 @@ public class NetworkActivity2 extends Activity {
 				}
 			});
 
-//			int tableRowParams = UIUtils.getDimension(ICON_SIZE);
-//
-//			TableRow.LayoutParams params = new TableRow.LayoutParams(tableRowParams,tableRowParams);
-//
-//
-//
-//			params.leftMargin = Math.round(5);
-//			params.rightMargin = Math.round(5);
-//
-//			if (index < 3) {
-//				TableRow board = (TableRow) findViewById(R.id.tableRow1);
-//				board.addView(but, params);
-//			} else {
-//				TableRow board2 = (TableRow) findViewById(R.id.tableRow2);
-//				board2.addView(but, params);
-//
-//			}
-			
 			fillSocialNetworkTable(objetos.size(),but,index);
 		}
 
-		
+
 		// MENU
 		UIUtils.setMenu(this);
 	}
@@ -122,19 +103,23 @@ public class NetworkActivity2 extends Activity {
 		overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
 	}
 
-	
+
 	private void fillSocialNetworkTable(int itemsCount,ImageButton but,int item)
 	{
-
 		//Boton de relleno
 		ImageButton butFill = new ImageButton(this);
 		butFill.setAdjustViewBounds(true);
 		butFill.setScaleType(ImageView.ScaleType.CENTER_CROP);
 		butFill.setBackgroundColor(Color.TRANSPARENT);
 		butFill.setVisibility(View.INVISIBLE);
-		//
+
+		//NormalParams
 		int tableRowParams = UIUtils.getDimension(ICON_SIZE);		
 		TableRow.LayoutParams params = new TableRow.LayoutParams(tableRowParams,tableRowParams);
+		//SmallParams
+		int tableRowSmallParams = UIUtils.getDimension(75);
+		TableRow.LayoutParams paramsSmall = new TableRow.LayoutParams(tableRowSmallParams,tableRowParams);
+
 		switch (itemsCount) {
 		case 1:
 			TableRow board2 = (TableRow) findViewById(R.id.tableRow2);		
@@ -142,7 +127,12 @@ public class NetworkActivity2 extends Activity {
 			break;
 		case 2:
 			TableRow board3 = (TableRow) findViewById(R.id.tableRow2);
-			board3.addView(but, params);
+			if(item == 0){
+				board3.addView(but, params);
+				board3.addView(butFill, paramsSmall);
+			}
+			else
+				board3.addView(but, params);
 			break;
 		case 3:
 			switch (item) {
@@ -159,14 +149,15 @@ public class NetworkActivity2 extends Activity {
 				board02.addView(but, params);
 				break;
 			}
-		
+
 			break;
 		case 4:
+
 			if (item < 2) {
 				TableRow board0 = (TableRow) findViewById(R.id.tableRow1);
 				if(item == 0){
 					board0.addView(but, params);
-				//	board0.addView(butFill, params);
+					board0.addView(butFill, paramsSmall);
 				}
 				else
 					board0.addView(but, params);
@@ -176,11 +167,13 @@ public class NetworkActivity2 extends Activity {
 					TableRow board1 = (TableRow) findViewById(R.id.tableRow2);
 					if(item == 2){
 						board1.addView(but, params);
-					//	board1.addView(butFill, params);
+						board1.addView(butFill, paramsSmall);
 					}
 					else
 						board1.addView(but, params);				} 
 			}
+			TableRow boardNonVisible = (TableRow) findViewById(R.id.tableRow3);
+			boardNonVisible.setVisibility(View.GONE);
 
 			break;
 		case 5:
@@ -212,35 +205,29 @@ public class NetworkActivity2 extends Activity {
 				}
 			}
 
-			
+
 
 			break;
-		
+
 		default:
-			setLayoutParams(params,item);
-			if (item < 2) {
+
+			// Use this part if you want show 3 columns and 2 rows	
+			if (item < 3) {
 				TableRow board = (TableRow) findViewById(R.id.tableRow1);
-				
 				board.addView(but, params);
 			} else {
-				if (item >= 2 && item < 4) {
-					TableRow board22 = (TableRow) findViewById(R.id.tableRow2);
-					
-					board22.addView(but, params);
-				} else {
-					TableRow board33 = (TableRow) findViewById(R.id.tableRow3);
-					
-					board33.addView(but, params);
-				}
+				TableRow board1 = (TableRow) findViewById(R.id.tableRow2);
+				board1.addView(but, params);
 			}
+			TableRow boardNoVisible = (TableRow) findViewById(R.id.tableRow3);
 			break;
 		}
 	}
-	
-private void setLayoutParams(TableRow.LayoutParams params,int index){
-	 int margin_20 = UIUtils.getDimension(20);
-     int margin_10 = UIUtils.getDimension(10);
-		
+
+	private void setLayoutParams(TableRow.LayoutParams params,int index){
+		int margin_20 = UIUtils.getDimension(20);
+		int margin_10 = UIUtils.getDimension(10);
+
 		if((index%2)==0){
 			params.leftMargin = Math.round(margin_20);
 			params.rightMargin = Math.round(margin_10);
@@ -250,6 +237,8 @@ private void setLayoutParams(TableRow.LayoutParams params,int index){
 			params.leftMargin = Math.round(margin_10);
 			params.rightMargin = Math.round(margin_20);
 		}
-}
-	
+
+
+	}
+
 }

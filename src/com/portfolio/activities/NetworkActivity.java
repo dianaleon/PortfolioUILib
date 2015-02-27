@@ -42,7 +42,7 @@ public class NetworkActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
-		
+
 
 		super.onCreate(savedInstanceState);
 
@@ -97,51 +97,53 @@ public class NetworkActivity extends BaseActivity {
 				}
 			});
 
+			fillSocialNetworkTable(objetos.size(),but,index);
 			
-			
-			int tableRowParams = UIUtils.getDimension(ICON_SIZE);
-			
-			TableRow.LayoutParams params = new TableRow.LayoutParams(tableRowParams,tableRowParams);
-			
-            int margin_20 = UIUtils.getDimension(20);
-            int margin_10 = UIUtils.getDimension(10);
-			
-			if((index%2)==0){
-				params.leftMargin = Math.round(margin_20);
-				params.rightMargin = Math.round(margin_10);
-			}
-			else
-			{
-				params.leftMargin = Math.round(margin_10);
-				params.rightMargin = Math.round(margin_20);
-			}
-					
-
-			if (index < 2) {
-				TableRow board = (TableRow) findViewById(R.id.tableRow1);
-				// board.addView(but, new TableRow.LayoutParams(
-				// TableRow.LayoutParams.WRAP_CONTENT,
-				// TableRow.LayoutParams.WRAP_CONTENT, 1f));
-				board.addView(but, params);
-			} else {
-				if (index >= 2 && index < 4) {
-					TableRow board2 = (TableRow) findViewById(R.id.tableRow2);
-					// board2.addView(but, new TableRow.LayoutParams(
-					// TableRow.LayoutParams.WRAP_CONTENT,
-					// TableRow.LayoutParams.WRAP_CONTENT, 1f));
-					board2.addView(but, params);
-				} else {
-					TableRow board3 = (TableRow) findViewById(R.id.tableRow3);
-					// board3.addView(but, new TableRow.LayoutParams(
-					// TableRow.LayoutParams.WRAP_CONTENT,
-					// TableRow.LayoutParams.WRAP_CONTENT, 1f));
-					board3.addView(but, params);
-				}
-			}
 		}
 
-		// final LinearLayout linear = (LinearLayout)
-		// findViewById(R.id.layout_header_body_container);
+
+//			int tableRowParams = UIUtils.getDimension(ICON_SIZE);
+//
+//			TableRow.LayoutParams params = new TableRow.LayoutParams(tableRowParams,tableRowParams);
+//
+//			int margin_20 = UIUtils.getDimension(20);
+//			int margin_10 = UIUtils.getDimension(10);
+//
+//			if((index%2)==0){
+//				params.leftMargin = Math.round(margin_20);
+//				params.rightMargin = Math.round(margin_10);
+//			}
+//			else
+//			{
+//				params.leftMargin = Math.round(margin_10);
+//				params.rightMargin = Math.round(margin_20);
+//			}
+//
+//
+//			if (index < 2) {
+//				TableRow board = (TableRow) findViewById(R.id.tableRow1);
+//				// board.addView(but, new TableRow.LayoutParams(
+//				// TableRow.LayoutParams.WRAP_CONTENT,
+//				// TableRow.LayoutParams.WRAP_CONTENT, 1f));
+//				board.addView(but, params);
+//			} else {
+//				if (index >= 2 && index < 4) {
+//					TableRow board2 = (TableRow) findViewById(R.id.tableRow2);
+//					// board2.addView(but, new TableRow.LayoutParams(
+//					// TableRow.LayoutParams.WRAP_CONTENT,
+//					// TableRow.LayoutParams.WRAP_CONTENT, 1f));
+//					board2.addView(but, params);
+//				} else {
+//					TableRow board3 = (TableRow) findViewById(R.id.tableRow3);
+//					// board3.addView(but, new TableRow.LayoutParams(
+//					// TableRow.LayoutParams.WRAP_CONTENT,
+//					// TableRow.LayoutParams.WRAP_CONTENT, 1f));
+//					board3.addView(but, params);
+//				}
+//			}
+//		}
+
+		
 		UIUtils.setGradient(tableLayout, netPage.getType().getBackground());
 
 		if ((theme.getHomeImage() != null)
@@ -173,9 +175,9 @@ public class NetworkActivity extends BaseActivity {
 	public void onContentVisible() {
 		headerView.setVisibility(View.VISIBLE);
 	}
-	
-	
-	private void fillSocialNetworkTable(int itemsCount,ImageButton but)
+
+
+	private void fillSocialNetworkTable(int itemsCount,ImageButton but,int item)
 	{
 		//Boton de relleno
 		ImageButton butFill = new ImageButton(this);
@@ -183,38 +185,140 @@ public class NetworkActivity extends BaseActivity {
 		butFill.setScaleType(ImageView.ScaleType.CENTER_CROP);
 		butFill.setBackgroundColor(Color.TRANSPARENT);
 		butFill.setVisibility(View.INVISIBLE);
-		//
+
+		//NormalParams
 		int tableRowParams = UIUtils.getDimension(ICON_SIZE);		
 		TableRow.LayoutParams params = new TableRow.LayoutParams(tableRowParams,tableRowParams);
+		//SmallParams
+		int tableRowSmallParams = UIUtils.getDimension(75);
+		TableRow.LayoutParams paramsSmall = new TableRow.LayoutParams(tableRowSmallParams,tableRowParams);
+
 		switch (itemsCount) {
 		case 1:
-			TableRow board2 = (TableRow) findViewById(R.id.tableRow2);
-			board2.addView(butFill, params);
+			TableRow board2 = (TableRow) findViewById(R.id.tableRow2);		
 			board2.addView(but, params);
-			board2.addView(butFill, params);
 			break;
 		case 2:
-
+			TableRow board3 = (TableRow) findViewById(R.id.tableRow2);
+			if(item == 0){
+				board3.addView(but, params);
+				board3.addView(butFill, paramsSmall);
+			}
+			else
+				board3.addView(but, params);
 			break;
 		case 3:
+			switch (item) {
+			case 0:
+				TableRow board0 = (TableRow) findViewById(R.id.tableRow1);		
+				board0.addView(but, params);
+				break;
+			case 1:
+				TableRow board1 = (TableRow) findViewById(R.id.tableRow2);		
+				board1.addView(but, params);
+				break;
+			case 2:
+				TableRow board02 = (TableRow) findViewById(R.id.tableRow3);		
+				board02.addView(but, params);
+				break;
+			}
 
 			break;
 		case 4:
 
+			if (item < 2) {
+				TableRow board0 = (TableRow) findViewById(R.id.tableRow1);
+				if(item == 0){
+					board0.addView(but, params);
+					board0.addView(butFill, paramsSmall);
+				}
+				else
+					board0.addView(but, params);
+
+			} else {
+				if (item >= 2 && item < 4) {
+					TableRow board1 = (TableRow) findViewById(R.id.tableRow2);
+					if(item == 2){
+						board1.addView(but, params);
+						board1.addView(butFill, paramsSmall);
+					}
+					else
+						board1.addView(but, params);				} 
+			}
+			TableRow boardNonVisible = (TableRow) findViewById(R.id.tableRow3);
+			boardNonVisible.setVisibility(View.GONE);
+
 			break;
 		case 5:
+			if (item < 2) {
+				TableRow board0 = (TableRow) findViewById(R.id.tableRow1);
+				if(item == 0){
+					board0.addView(but, params);
+					board0.addView(butFill, params);
+				}
+				else
+					board0.addView(but, params);
+
+			} else {
+				if (item == 2) {
+					TableRow board1 = (TableRow) findViewById(R.id.tableRow2);
+					board1.addView(but, params);				
+				} 
+				else{
+					if (item >2 && item <5) {
+						TableRow board002 = (TableRow) findViewById(R.id.tableRow3);
+						if(item == 3){
+							board002.addView(but, params);	
+							board002.addView(butFill, params);
+						}
+						else
+							board002.addView(but, params);	
+
+					}		
+				}
+			}
 
 			break;
-			
-
 
 		default:
+
+			// Use this part of code if you need to show 2 columns an 3 rows
+
+			setLayoutParams(params,item);
+
+			if (item < 2) {
+				TableRow board = (TableRow) findViewById(R.id.tableRow1);
+
+				board.addView(but, params);
+			} else {
+				if (item >= 2 && item < 4) {
+					TableRow board22 = (TableRow) findViewById(R.id.tableRow2);
+
+					board22.addView(but, params);
+				} else {
+					TableRow board33 = (TableRow) findViewById(R.id.tableRow3);
+
+					board33.addView(but, params);
+				}
+			}
+
 			break;
 		}
 	}
-	
-	
-	
-	
+
+	private void setLayoutParams(TableRow.LayoutParams params,int index){
+		int margin_20 = UIUtils.getDimension(20);
+		int margin_10 = UIUtils.getDimension(10);
+
+		if((index%2)==0){
+			params.leftMargin = Math.round(margin_20);
+			params.rightMargin = Math.round(margin_10);
+		}
+		else
+		{
+			params.leftMargin = Math.round(margin_10);
+			params.rightMargin = Math.round(margin_20);
+		}
+	}
 
 }

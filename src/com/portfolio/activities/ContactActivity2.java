@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 
 import com.portfolio.R;
 import com.portfolio.components.ContactItem;
+import com.portfolio.components.ContactItem2;
 import com.portfolio.listener.IMediaListener;
 import com.portfolio.model.PortfolioModel;
 import com.portfolio.model.interfaces.IContactPage;
@@ -53,7 +54,7 @@ public class ContactActivity2 extends Activity {
 				IContactObject contact = (IContactObject) object;
 				String type = contact.getSubtype();
 				if (type != null) {
-					ContactItem contactItem = new ContactItem(this);
+					ContactItem2 contactItem = new ContactItem2(this);
 					contactItem.fill(content, contact.getTextColor(),
 								contact.getStartColorBackground(),
 								contact.getEndColorBackground(),

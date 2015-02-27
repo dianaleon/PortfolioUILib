@@ -7,6 +7,8 @@ import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.TableRow;
 import android.widget.TextView;
 
@@ -33,6 +35,7 @@ public class PhotoTextGridListItem extends TableRow {
 	}
 
 	private void init() {
+	
 		tf = Typeface.createFromAsset(getContext().getAssets(),
 				"fonts/CopperGothicStd29AB.otf");
 		imageView = (ImageView) findViewById(R.id.imageView1);

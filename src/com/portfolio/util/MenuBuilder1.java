@@ -196,7 +196,7 @@ public class MenuBuilder1 implements MenuBuilder {
 //						}, theme.getHomeImage());
 
 			LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT,
-					UIUtils.getDimension(70));
+					UIUtils.getDimension(50));
 			if (index == (titles.size() - 1) ) {
 				params.setMargins(0,2,0,0);
 			}else{

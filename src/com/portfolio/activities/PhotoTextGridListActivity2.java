@@ -2,7 +2,9 @@ package com.portfolio.activities;
 
 import java.util.List;
 
+import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -39,6 +41,7 @@ public class PhotoTextGridListActivity2 extends Activity {
 		
 		ScrollView scrollView = (ScrollView) findViewById(R.id.layout_content);
 		UIUtils.setGradient(scrollView, listPage.getType().getBackground().getStartColor(), listPage.getType().getBackground().getEndColor(), String.valueOf(listPage.getType().getBackground().getAngle()));
+		//UIUtils.setGradient(scrollView,"#000000", "#000000", String.valueOf(listPage.getType().getBackground().getAngle()));
 
 		List<IPageObject> objetos = listPage.getObjects();
 		for (int index = 0; index < objetos.size(); index++) {
@@ -49,6 +52,9 @@ public class PhotoTextGridListActivity2 extends Activity {
 					PhotoTextGridListItem item = new PhotoTextGridListItem(this);
 					item.fill(textObject.getContent_img(), textObject.getTitle(),
 							textObject.getContent(), textObject.getTextColor(), textObject.getStartColorBackground(), textObject.getEndColorBackground(), textObject.getGradientOrientatio());
+					LayoutParams params = (LayoutParams) linearLayout.getLayoutParams();
+					params.topMargin =1;
+					params.bottomMargin =1;
 					linearLayout.addView(item);
 					break;
 				case IPageObject.type_image:
@@ -56,7 +62,11 @@ public class PhotoTextGridListActivity2 extends Activity {
 					PhotoTextGridListItem itemImage = new PhotoTextGridListItem(this);
 					itemImage.fill(imageObject.getContent_img(), imageObject.getTitle(),
 							imageObject.getContent(), imageObject.getTextColor(), imageObject.getStartColorBackground(), imageObject.getEndColorBackground(), imageObject.getGradientOrientatio());
-					linearLayout.addView(itemImage);
+					//linearLayout.addView(itemImage);
+					LayoutParams params1 = (LayoutParams) linearLayout.getLayoutParams();
+					params1.topMargin =1;
+					params1.bottomMargin =1;
+					linearLayout.addView(itemImage, params1);
 					break;
 			}
 		}
