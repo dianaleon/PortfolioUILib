@@ -22,6 +22,7 @@ import com.portfolio.R;
 import com.portfolio.activities.AccordionPhotoActivity;
 import com.portfolio.activities.AccordionTextActivity;
 import com.portfolio.activities.CatalogoActivity;
+import com.portfolio.activities.CatalogoActivity2;
 import com.portfolio.activities.ContactActivity;
 import com.portfolio.activities.ContactActivity2;
 import com.portfolio.activities.ImageActivity;
@@ -57,25 +58,21 @@ public class MenuBuilder1 implements MenuBuilder {
 				.getPorfolioMenu();
 		ITheme theme = PortfolioModel.getInstance(baseMenu.getContext())
 				.getTheme();
-		
 
 		for (int index = 0; index < posicion.size(); index++) {
 			int pos = posicion.get(index);
-			
-			 
-					
-			LayoutInflater inflater = LayoutInflater.from(baseMenu.getContext());
-			View but= inflater.inflate(R.layout.menu1_item, null, false);
-		
+
+			LayoutInflater inflater = LayoutInflater
+					.from(baseMenu.getContext());
+			View but = inflater.inflate(R.layout.menu1_item, null, false);
+
 			IPage page = PortfolioModel.getInstance(baseMenu.getContext())
 					.getPageInfo(pos);
 			BackgroundObject item = page.getType().getBackground();
 			UIUtils.setGradient(but, item.getStartColor(), item.getEndColor(),
 					String.valueOf(item.getAngle()));
 
-
-			
-			TextView itemText = (TextView)but.findViewById(R.id.itemText);
+			TextView itemText = (TextView) but.findViewById(R.id.itemText);
 			itemText.setText(page.getTitle());
 			itemText.setTypeface(tf);
 			itemText.setTextColor(Color.parseColor(menu.getText_color()));
@@ -122,7 +119,7 @@ public class MenuBuilder1 implements MenuBuilder {
 
 					if (layout.equalsIgnoreCase("catalogo")) {
 						Intent intentCat = new Intent(baseMenu.getContext(),
-								CatalogoActivity.class);
+								CatalogoActivity2.class);
 						intentCat.putExtra("position", pos);
 						baseMenu.getContext().startActivity(intentCat);
 					}
@@ -175,38 +172,24 @@ public class MenuBuilder1 implements MenuBuilder {
 			});
 			final LinearLayout linear = (LinearLayout) baseMenu
 					.findViewById(R.id.layout);
-			// linear.setBackgroundColor(Color.parseColor(menu.getText_color()));
 
-			UIUtils.setGradient(baseMenu, menu.getBackground());
+			linear.setBackgroundColor(Color.parseColor(menu.getText_color()));
 
-//			if ((theme.getHomeImage() != null)
-//					&& (!theme.getHomeImage().equalsIgnoreCase("")))
-//
-//				PortfolioModel.getInstance(baseMenu.getContext()).getMedia(
-//						new IMediaListener() {
-//							@Override
-//							public void onImageReady(Bitmap bitmap) {
-//								Drawable drawable = new BitmapDrawable(
-//										baseMenu.getResources(), bitmap);
-//								// linear.setBackgroundColor(Color.TRANSPARENT);
-//								baseMenu.setBackgroundDrawable(drawable);
-//
-//							}
-//
-//						}, theme.getHomeImage());
+			baseMenu.setBackgroundColor(Color.parseColor(theme.getBackground()
+					.getStartColor()));
 
 			LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT,
 					UIUtils.getDimension(50));
-			if (index == (titles.size() - 1) ) {
-				params.setMargins(0,2,0,0);
-			}else{
-				if(index == 0)
-					params.setMargins(0,0,2,0);
+			if (index == (titles.size() - 1)) {
+				params.setMargins(0, 2, 0, 2);
+			} else {
+				if (index == 0)
+					params.setMargins(0, 0, 0, 0);
 				else {
-						params.setMargins(0,2, 0,0);
-					}
+					params.setMargins(0, 2, 0, 0);
+				}
 			}
-		   
+
 			but.setLayoutParams(params);
 			linear.addView(but);
 		}

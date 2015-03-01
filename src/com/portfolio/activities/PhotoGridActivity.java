@@ -65,7 +65,7 @@ public class PhotoGridActivity extends Activity {
 				endColor = img.getEndColorBackground();
 				gradientColor = img.getGradientOrientatio();
 				
-				UIUtils.setGradient(linearLayout, img.getStartColorBackground(), img.getEndColorBackground(), String.valueOf(img.getGradientOrientatio()));
+				//UIUtils.setGradient(linearLayout, img.getStartColorBackground(), img.getEndColorBackground(), String.valueOf(img.getGradientOrientatio()));
 				PortfolioModel.getInstance(this).getMedia(new IMediaListener() {
 					@Override
 					public void onImageReady(Bitmap bitmap) {

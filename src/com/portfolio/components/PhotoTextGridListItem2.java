@@ -17,20 +17,20 @@ import com.portfolio.listener.IMediaListener;
 import com.portfolio.model.PortfolioModel;
 import com.portfolio.util.UIUtils;
 
-public class PhotoTextGridListItem extends TableRow {
+public class PhotoTextGridListItem2 extends TableRow {
 
 	private ImageView imageView;
 	private TextView titleView;
 	private TextView contentView;
 	private Typeface tf;
 
-	public PhotoTextGridListItem(Context context) {
+	public PhotoTextGridListItem2(Context context) {
 		super(context);
 		((Activity)context).getLayoutInflater().inflate(R.layout.photo_text_grid_list_item, this);
 		init();
 	}
 
-	public PhotoTextGridListItem(Context context, AttributeSet attrs) {
+	public PhotoTextGridListItem2(Context context, AttributeSet attrs) {
 		super(context, attrs);
 	}
 
@@ -43,11 +43,12 @@ public class PhotoTextGridListItem extends TableRow {
 		contentView = (TextView) findViewById(R.id.text_page_item);
 	}
 	
-	public void fill(String contentImage, String title, String content, String textColor, String startColor, String endColor, String orientation) {
+	public void fill(String contentImage, String title, String content, String textTitleColor,String textContentColor, String startColor, String endColor, String orientation) {
 		titleView.setText(title);
 	    titleView.setTypeface(null,Typeface.BOLD);
 		contentView.setText(content);
-		UIUtils.setTextColor(contentView, textColor);
+		UIUtils.setTextColor(titleView, textTitleColor);
+		UIUtils.setTextColor(contentView, textContentColor);
 		UIUtils.setGradient(this, startColor, endColor, orientation);
 
 		PortfolioModel.getInstance(getContext()).getMedia(new IMediaListener() {
