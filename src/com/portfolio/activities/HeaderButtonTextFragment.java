@@ -22,6 +22,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -29,7 +30,8 @@ import android.widget.ViewFlipper;
 
 public class HeaderButtonTextFragment extends HeaderFragment {
 
-	
+	final int ICON_HEIGHT = 50;
+	final int ICON_WIDTH = 80;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,43 +45,30 @@ public class HeaderButtonTextFragment extends HeaderFragment {
 		IMenu menu = portfolioModel.getPorfolioMenu();
 		ITheme theme = portfolioModel.getTheme();
 
-		// LinearLayout layoutHeader = (LinearLayout)
-		// ((Activity)getActivity()).findViewById(R.id.layout_header);
 		UIUtils.setGradient(header, theme.getTitleBarBackground()
 				.getStartColor(), theme.getTitleBarBackground().getEndColor(),
 				String.valueOf(theme.getTitleBarBackground().getAngle()));
 
 		Typeface font1 = Typeface.createFromAsset(getActivity().getAssets(),
 				"fonts/CopperplateGothicStd 31BC.otf");
-		
-		
+
+
 		final ViewFlipper flipper = (ViewFlipper) (getActivity()).findViewById(R.id.flipper);
 
 		final ImageButton customButton = (ImageButton) header.findViewById(R.id.header_button);
 		customButton.setBackgroundColor(Color.TRANSPARENT);
-		 //RelativeLayout.LayoutParams butLayoutParams1 = (RelativeLayout.LayoutParams) customButton.getLayoutParams();
-		//butLayoutParams1.leftMargin = UIUtils.getDimension(20);
-		//butLayoutParams1.width =UIUtils.getDimension(200);
-		//butLayoutParams1.height =UIUtils.getDimension(100);
-		// customButton.setLayoutParams(butLayoutParams1);
 
-		
 		portfolioModel.getMedia(new IMediaListener() {
 			@Override
 			public void onImageReady(Bitmap bitmap) {
-				int width = UIUtils.getDimension(bitmap.getWidth());
-				int height =  UIUtils.getDimension(bitmap.getHeight());
-				
-				//RelativeLayout.LayoutParams params = new  RelativeLayout.LayoutParams(width, height);
-				//params.leftMargin = UIUtils.getDimension(30); 
-				//customButton.setLayoutParams(params);
-
 				customButton.setImageBitmap(bitmap);
-
+				customButton.setScaleType(ScaleType.FIT_CENTER);
+				customButton.getLayoutParams().height = UIUtils.getDimension(ICON_HEIGHT);
+				customButton.getLayoutParams().width = UIUtils.getDimension(ICON_WIDTH);
 			}
 
 		}, menu.getItemIcon());
-		
+
 		customButton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				flipper.setInAnimation(UIUtils.inFromRightAnimation());
@@ -96,17 +85,17 @@ public class HeaderButtonTextFragment extends HeaderFragment {
 			}
 		});
 
-		
+
 		TextView customSubtittle = (TextView) header
 				.findViewById(R.id.header_text);
 		customSubtittle.setTextSize(22);
-	    customSubtittle.setTypeface(font1, Typeface.BOLD);
+		customSubtittle.setTypeface(font1, Typeface.BOLD);
 		customSubtittle.setTextScaleX(1);
 		customSubtittle.setText(page.getTitle());
 		customSubtittle.setTextColor(Color.parseColor(menu.getText_color()));
-        
+
 		return header;
 	}
-	
-	
+
+
 }

@@ -38,6 +38,12 @@ import com.portfolio.model.interfaces.IPage;
 import com.portfolio.model.interfaces.ITheme;
 
 public class MenuBuilder2 implements MenuBuilder {
+	
+	final int ICON_HEIGHT = 50;
+	final int ICON_WIDTH = 80;
+	final int MENU_ITEM_WIDTH = 70;
+
+
 
 	@Override
 	public void build(final menu baseMenu) {
@@ -85,6 +91,9 @@ public class MenuBuilder2 implements MenuBuilder {
 				@Override
 				public void onImageReady(Bitmap bitmap) {
 					itemImage.setImageBitmap(bitmap);
+					itemImage.getLayoutParams().height = UIUtils.getDimension(ICON_HEIGHT);
+					itemImage.getLayoutParams().width = UIUtils.getDimension(ICON_WIDTH);
+
 				}
 
 			}, menu.getItemIcon());
@@ -209,7 +218,7 @@ public class MenuBuilder2 implements MenuBuilder {
 						}, theme.getHomeImage());
 
 			LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT,
-					UIUtils.getDimension(70));
+					UIUtils.getDimension(MENU_ITEM_WIDTH));
 			if (index == (titles.size() - 1)) {
 				params.setMargins(0, 0, 0, 0);
 			} else {
