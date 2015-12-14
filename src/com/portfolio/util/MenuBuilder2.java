@@ -39,9 +39,10 @@ import com.portfolio.model.interfaces.ITheme;
 
 public class MenuBuilder2 implements MenuBuilder {
 	
-	final int ICON_HEIGHT = 50;
-	final int ICON_WIDTH = 80;
-	final int MENU_ITEM_WIDTH = 70;
+	final int ICON_HEIGHT = 30;
+	final int ICON_WIDTH = 30;
+	//ALTO BOTON MENU
+	final int MENU_ITEM_WIDTH = 50;
 
 
 
@@ -49,7 +50,8 @@ public class MenuBuilder2 implements MenuBuilder {
 	public void build(final menu baseMenu) {
 
 		Typeface tf = Typeface.createFromAsset(baseMenu.getContext()
-				.getAssets(), "fonts/CopperGothicStd29AB.otf");
+				.getAssets(), "fonts/Raleway-Medium.ttf");
+		
 		final PortfolioModel portfolioModel = PortfolioModel
 				.getInstance(baseMenu.getContext());
 		List<String> titles = (List<String>) portfolioModel.getPagesTitles();
@@ -96,11 +98,14 @@ public class MenuBuilder2 implements MenuBuilder {
 
 				}
 
-			}, menu.getItemIcon());
+			}, theme.getUrlImages());
 			
 			TextView itemText = (TextView)but.findViewById(R.id.itemText);
 			itemText.setText(page.getTitle());
+			itemText.setTypeface(tf);
+			
 			but.setTag(pos);
+	
 			
 			but.setOnClickListener(new OnClickListener() {
 

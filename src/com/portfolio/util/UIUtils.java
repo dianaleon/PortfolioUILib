@@ -71,12 +71,15 @@ public class UIUtils {
 	}
 
 	public static HeaderFragment getHeaderFragment(Context context) {
+		
+		
 		PortfolioModel portfolioModel = PortfolioModel.getInstance(context);
 		ITheme theme = portfolioModel.getTheme();
 		String layoutHeader = theme.getHeaderLayout();
 
 		if (layoutHeader.equalsIgnoreCase("header_title_subtitle")) {
 			return new HeaderTitleSubtitleFragment();
+			//SI ES LA APP 2 QUE ES UN BOTON!!!!!
 		} else if (layoutHeader.equalsIgnoreCase("header_button_title")) {
 			return new HeaderButtonTextFragment();
 		}
@@ -84,6 +87,7 @@ public class UIUtils {
 	}
 
 	public static void setHeader(Context context) {
+		
 		// Setear el titulo en la pagina
 		PortfolioModel portfolioModel = PortfolioModel.getInstance(context);
 		IMenu menu = portfolioModel.getPorfolioMenu();
@@ -96,24 +100,31 @@ public class UIUtils {
 						.getTitleBarBackground().getEndColor(),
 				String.valueOf(theme.getTitleBarBackground().getAngle()));
 
-		Typeface font1 = Typeface.createFromAsset(context.getAssets(),
-				"fonts/CopperplateGothicStd 31BC.otf");
-
+		
+		
 		TextView customTittle = (TextView) ((Activity) context)
 				.findViewById(R.id.tittle_app);
-		customTittle.setTypeface(font1);
-		customTittle.setTextSize(25);
+		
+		customTittle.setTextSize(22);
 		customTittle.setText(menu.getTitle());
-
+		Typeface font1 = Typeface.createFromAsset(context.getAssets(),
+				"fonts/Cinzel-Bold.ttf");
+		customTittle.setTypeface(font1);
+		customTittle.setTextColor(Color.WHITE);
+		
+		Typeface font2 = Typeface.createFromAsset(context.getAssets(),
+				"fonts/Cinzel-Regular.ttf");
 		TextView customSubtittle = (TextView) ((Activity) context)
 				.findViewById(R.id.sub_tittle_app);
-		customSubtittle.setTypeface(font1);
-		customSubtittle.setTextSize(20);
+		customSubtittle.setTypeface(font2);
+		customSubtittle.setTextSize(18);
 		customSubtittle.setTextScaleX(1);
 		customSubtittle.setText(menu.getSubtitle());
+		customSubtittle.setTextColor(Color.WHITE);
 	}
 
 	public static void setMenu(final Context context) {
+		
 		IMenu menu = PortfolioModel.getInstance(context).getPorfolioMenu();
 		final menu menuLayout = (menu) ((Activity) context)
 				.findViewById(R.id.layout_menu);

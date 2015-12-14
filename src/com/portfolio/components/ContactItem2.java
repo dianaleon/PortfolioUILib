@@ -41,6 +41,7 @@ public class ContactItem2 extends LinearLayout {
 	    params.topMargin = 1;
 	    params.bottomMargin = 1;
 		textView.setLayoutParams(params);
+		textView.setHeight(30);
 		UIUtils.setTextColor(textView, textColor);
 		UIUtils.setGradient(textView, startColor, endColor, orientation);
 	}

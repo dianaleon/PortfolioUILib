@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -11,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.portfolio.R;
+import com.portfolio.R.color;
 import com.portfolio.listener.IMediaListener;
 import com.portfolio.model.PortfolioModel;
 import com.portfolio.model.interfaces.IPhotosGridPage;
@@ -52,6 +54,8 @@ public class PhotoGridActivity extends Activity {
 		String endColor = null;
 		String gradientColor = null;
 		
+		String bgColor = page.getType().getBackground().getStartColor();
+		//DATA
 		for (int index = 0; index < objetos.size(); index++) {
 			IPageObject object = objetos.get(index);
 			switch (object.getType()) {
@@ -77,17 +81,19 @@ public class PhotoGridActivity extends Activity {
 		}
 
 		TextView tittleTextView = (TextView) findViewById(R.id.content);
-		UIUtils.setTextColor(tittleTextView, textColor);
+		//UIUtils.setTextColor(tittleTextView, textColor);
+		tittleTextView.setTextColor(Color.parseColor("#231b10"));
 		Typeface font1 = Typeface.createFromAsset(this.getAssets(),
 				"fonts/CopperplateGothicStd 31BC.otf");
 		tittleTextView.setTypeface(font1);
 		UIUtils.setGradient(tittleTextView, startColor, endColor, gradientColor);
 		tittleTextView.setText(title);
-
+		tittleTextView.setTextSize(14);
+		
 		TextView contentTextView = (TextView) findViewById(R.id.text_page_item);
-		UIUtils.setGradient(contentTextView, textColor, textColor, gradientColor);
+		UIUtils.setGradient(contentTextView, bgColor, bgColor, gradientColor);
 		UIUtils.setTextColor(contentTextView, startColor);
-
+		contentTextView.setTextSize(12);
 		contentTextView.setText(content);
 
 		// MENU

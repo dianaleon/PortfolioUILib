@@ -33,6 +33,7 @@ public class ContactItem extends LinearLayout {
 		Typeface tf = Typeface.createFromAsset(getContext().getAssets(),
 				"fonts/CopperGothicStd29AB.otf");
 		textView = (TextView) findViewById(R.id.contentText);
+		textView.setHeight(30);
 	}
 	
 	public void fill(String content, String textColor, String startColor, String endColor, String orientation) {
@@ -45,8 +46,9 @@ public class ContactItem extends LinearLayout {
 			String startColor, String endColor,
 			String orientation, final String type) {
 		fill(content, textColor, startColor, endColor, orientation);
+		textView.setHeight(20);
 		textView.setOnClickListener(new OnClickListener() {
-			
+				
 			@Override
 			public void onClick(View v) {
 				if (type.equalsIgnoreCase(IContactPage.movil) || type.equalsIgnoreCase(IContactPage.telefono)) {

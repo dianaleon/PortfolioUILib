@@ -30,8 +30,8 @@ import android.widget.ViewFlipper;
 
 public class HeaderButtonTextFragment extends HeaderFragment {
 
-	final int ICON_HEIGHT = 50;
-	final int ICON_WIDTH = 80;
+	final int ICON_HEIGHT = 30;
+	final int ICON_WIDTH = 30;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,12 +45,13 @@ public class HeaderButtonTextFragment extends HeaderFragment {
 		IMenu menu = portfolioModel.getPorfolioMenu();
 		ITheme theme = portfolioModel.getTheme();
 
-		UIUtils.setGradient(header, theme.getTitleBarBackground()
+		UIUtils.setGradient(header, 
+				theme.getTitleBarBackground()
 				.getStartColor(), theme.getTitleBarBackground().getEndColor(),
 				String.valueOf(theme.getTitleBarBackground().getAngle()));
 
 		Typeface font1 = Typeface.createFromAsset(getActivity().getAssets(),
-				"fonts/CopperplateGothicStd 31BC.otf");
+				"fonts/Raleway-Bold.ttf");
 
 
 		final ViewFlipper flipper = (ViewFlipper) (getActivity()).findViewById(R.id.flipper);
@@ -67,7 +68,7 @@ public class HeaderButtonTextFragment extends HeaderFragment {
 				customButton.getLayoutParams().width = UIUtils.getDimension(ICON_WIDTH);
 			}
 
-		}, menu.getItemIcon());
+		},theme.getUrlImages());
 
 		customButton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {

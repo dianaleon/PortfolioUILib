@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import com.portfolio.model.interfaces.component.IImageObject;
 import com.portfolio.model.interfaces.component.IPageObject;
 import com.portfolio.util.UIUtils;
 
+//ARQUITECTO PAGINA BIOGRAFIA
 public class PhotoTextActivity extends BaseActivity {
 
 	private TextView biographyText;
@@ -74,7 +76,13 @@ public class PhotoTextActivity extends BaseActivity {
 
 			}, imageObject.getContent_img());
 
+			Typeface font1 = Typeface.createFromAsset(this.getAssets(),
+					"fonts/Raleway-Regular.ttf");
+			
+			biographyText.setTypeface(font1, Typeface.BOLD);
 			biographyText.setText(imageObject.getContent());
+			biographyText.setTextSize(12);
+			
 			if (!imageObject.getTitle().equalsIgnoreCase("")) {
 				biographyTitleText.setText(imageObject.getTitle());
 			} else {

@@ -46,7 +46,10 @@ public class PhotoTextGridListItem2 extends TableRow {
 	public void fill(String contentImage, String title, String content, String textTitleColor,String textContentColor, String startColor, String endColor, String orientation) {
 		titleView.setText(title);
 	    titleView.setTypeface(null,Typeface.BOLD);
-		contentView.setText(content);
+	    titleView.setTextSize(14);
+	    
+	    contentView.setText(content);
+	    contentView.setTextSize(10);
 		UIUtils.setTextColor(titleView, textTitleColor);
 		UIUtils.setTextColor(contentView, textContentColor);
 		UIUtils.setGradient(this, startColor, endColor, orientation);

@@ -42,23 +42,31 @@ import com.portfolio.model.interfaces.IMenu;
 import com.portfolio.model.interfaces.IPage;
 import com.portfolio.model.interfaces.ITheme;
 
+
+//MENU CONSTRUCTOR
 public class MenuBuilder1 implements MenuBuilder {
 
 	@Override
 	public void build(final menu baseMenu) {
-
-		Typeface tf = Typeface.createFromAsset(baseMenu.getContext()
-				.getAssets(), "fonts/CopperGothicStd29AB.otf");
+		
+		//PARA CARGAR INFO
 		final PortfolioModel portfolioModel = PortfolioModel
 				.getInstance(baseMenu.getContext());
-		List<String> titles = (List<String>) portfolioModel.getPagesTitles();
-		List<Integer> posicion = (List<Integer>) portfolioModel
-				.getPagesPositions();
+		
 		IMenu menu = PortfolioModel.getInstance(baseMenu.getContext())
 				.getPorfolioMenu();
 		ITheme theme = PortfolioModel.getInstance(baseMenu.getContext())
 				.getTheme();
 
+		
+		
+		Typeface tf = Typeface.createFromAsset(baseMenu.getContext()
+				.getAssets(), "fonts/OpenSans-Bold.ttf");
+		
+		List<String> titles = (List<String>) portfolioModel.getPagesTitles();
+		List<Integer> posicion = (List<Integer>) portfolioModel
+				.getPagesPositions();
+		
 		for (int index = 0; index < posicion.size(); index++) {
 			int pos = posicion.get(index);
 
@@ -68,13 +76,20 @@ public class MenuBuilder1 implements MenuBuilder {
 
 			IPage page = PortfolioModel.getInstance(baseMenu.getContext())
 					.getPageInfo(pos);
-			BackgroundObject item = page.getType().getBackground();
+			
+			//El background viene del menu_item_COLOR
+			//BackgroundObject item = page.getType().getBackground();
+			BackgroundObject item = theme.getMenuItemBackground();
+			
+			
 			UIUtils.setGradient(but, item.getStartColor(), item.getEndColor(),
 					String.valueOf(item.getAngle()));
 
 			TextView itemText = (TextView) but.findViewById(R.id.itemText);
-			itemText.setText(page.getTitle());
+			
+			itemText.setText(page.getTitle().toUpperCase());
 			itemText.setTypeface(tf);
+			itemText.setPadding(0, 0, 0, 0);
 			itemText.setTextColor(Color.parseColor(menu.getText_color()));
 			but.setTag(pos);
 			but.setOnClickListener(new OnClickListener() {
@@ -173,13 +188,14 @@ public class MenuBuilder1 implements MenuBuilder {
 			final LinearLayout linear = (LinearLayout) baseMenu
 					.findViewById(R.id.layout);
 
+			//COLOR BORDE ITEMS MENU
 			linear.setBackgroundColor(Color.parseColor(menu.getText_color()));
-
+			//COLOR FONDO EXTRA DEL MENU
 			baseMenu.setBackgroundColor(Color.parseColor(theme.getBackground()
 					.getStartColor()));
 
 			LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT,
-					UIUtils.getDimension(50));
+					UIUtils.getDimension(40));
 			if (index == (titles.size() - 1)) {
 				params.setMargins(0, 2, 0, 2);
 			} else {
