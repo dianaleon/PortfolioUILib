@@ -21,11 +21,13 @@ public class PhotoTextGridListActivity extends BaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		
 		super.onCreate(savedInstanceState);
-
-		setContentView(R.layout.activity_photo_text_grid_list_layout);
+		//Aca hay que cambiar para layout arquitecto pagina proyectos
+		setContentView(R.layout.activity_photo_text_grid_list_layout2);
 		Bundle bundle = this.getIntent().getExtras();
 		int position = bundle.getInt("position");
+		
 		
 		loadHeader(page);
 		loadFooter();
@@ -50,10 +52,13 @@ public class PhotoTextGridListActivity extends BaseActivity {
 				case IPageObject.type_text:
 					ITextObject textObject = (ITextObject) object;
 					PhotoTextGridListItem item = new PhotoTextGridListItem(this);
+							
 					item.fill(textObject.getContent_img(), textObject.getTitle(),
-							textObject.getContent(), textObject.getTextColor(), textObject.getStartColorBackground(), textObject.getEndColorBackground(), textObject.getGradientOrientatio());
+					textObject.getContent(), textObject.getTextColor(), textObject.getStartColorBackground(), textObject.getEndColorBackground(), textObject.getGradientOrientatio());
 					linearLayout.addView(item);
 					break;
+				 
+					
 				case IPageObject.type_image:
 					IImageObject imageObject = (IImageObject) object;
 					PhotoTextGridListItem itemImage = new PhotoTextGridListItem(this);
@@ -61,6 +66,7 @@ public class PhotoTextGridListActivity extends BaseActivity {
 							imageObject.getContent(), imageObject.getTextColor(), imageObject.getStartColorBackground(), imageObject.getEndColorBackground(), imageObject.getGradientOrientatio());
 					linearLayout.addView(itemImage);
 					break;
+				 
 			}
 		}
 

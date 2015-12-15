@@ -49,7 +49,7 @@ public class AccordionPhotoActivity extends BaseActivity {
 		// get the listview
         expListView = (ExpandableListView) findViewById(R.id.expandable);
         expListView.setGroupIndicator(null);
- 
+        
         // preparing list data
         prepareListData(objetos);
  
@@ -89,6 +89,7 @@ public class AccordionPhotoActivity extends BaseActivity {
 		for (int index = 0; index < objetos.size(); index++) {
 			// Adding child data
 			listDataHeader.add(objetos.get(index).getTitle());
+		
 			final List<Bitmap> groupElements = new ArrayList<Bitmap>();
 
 			PortfolioModel.getInstance(this).getMedia(new IMediaListener() {

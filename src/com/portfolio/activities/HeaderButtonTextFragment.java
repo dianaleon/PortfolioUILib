@@ -56,7 +56,7 @@ public class HeaderButtonTextFragment extends HeaderFragment {
 
 		final ViewFlipper flipper = (ViewFlipper) (getActivity()).findViewById(R.id.flipper);
 
-		final ImageButton customButton = (ImageButton) header.findViewById(R.id.header_button);
+		/*final ImageButton customButton = (ImageButton) header.findViewById(R.id.header_button);
 		customButton.setBackgroundColor(Color.TRANSPARENT);
 
 		portfolioModel.getMedia(new IMediaListener() {
@@ -86,10 +86,10 @@ public class HeaderButtonTextFragment extends HeaderFragment {
 			}
 		});
 
-
+*/
 		TextView customSubtittle = (TextView) header
 				.findViewById(R.id.header_text);
-		customSubtittle.setTextSize(22);
+		customSubtittle.setTextSize(18);
 		customSubtittle.setTypeface(font1, Typeface.BOLD);
 		customSubtittle.setTextScaleX(1);
 		customSubtittle.setText(page.getTitle());

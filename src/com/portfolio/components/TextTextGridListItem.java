@@ -34,7 +34,7 @@ public class TextTextGridListItem extends TableRow {
 
 	private void init() {
 		Typeface tf = Typeface.createFromAsset(getContext().getAssets(),
-				"fonts/CopperGothicStd29AB.otf");
+				"fonts/Raleway-Regular.ttf");
 		leftTitle = (TextView) findViewById(R.id.tittle_item_list_left);
 		titleView = (TextView) findViewById(R.id.tittle_item_list);
 		contentView = (TextView) findViewById(R.id.text_page_item);
@@ -43,6 +43,7 @@ public class TextTextGridListItem extends TableRow {
 	public void fill(String left_Title, String title, String content, String textColor, String startColor, String endColor, String orientation) {
 		leftTitle.setText(left_Title);
 		contentView.setText(content);
+		contentView.setTextSize(8);
 		UIUtils.setTextColor(contentView, textColor);
 		UIUtils.setGradient(this, startColor, endColor, orientation);
 

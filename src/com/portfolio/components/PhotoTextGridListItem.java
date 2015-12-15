@@ -23,7 +23,7 @@ public class PhotoTextGridListItem extends TableRow {
 	private TextView titleView;
 	private TextView contentView;
 	private Typeface tf;
-
+	private Typeface tfTitle;
 	public PhotoTextGridListItem(Context context) {
 		super(context);
 		((Activity)context).getLayoutInflater().inflate(R.layout.photo_text_grid_list_item, this);
@@ -36,8 +36,10 @@ public class PhotoTextGridListItem extends TableRow {
 
 	private void init() {
 	
+		tfTitle = Typeface.createFromAsset(getContext().getAssets(),
+				"fonts/Raleway-Bold.ttf");
 		tf = Typeface.createFromAsset(getContext().getAssets(),
-				"fonts/CopperGothicStd29AB.otf");
+				"fonts/Raleway-Regular.ttf");
 		imageView = (ImageView) findViewById(R.id.imageView1);
 		titleView = (TextView) findViewById(R.id.tittle_item_list);
 		contentView = (TextView) findViewById(R.id.text_page_item);
@@ -46,10 +48,12 @@ public class PhotoTextGridListItem extends TableRow {
 	public void fill(String contentImage, String title, String content, String textColor, String startColor, String endColor, String orientation) {
 		
 		titleView.setText(title);
-	    titleView.setTypeface(null,Typeface.BOLD);
+	    titleView.setTypeface(tfTitle,Typeface.BOLD);
 	    UIUtils.setTextColor(titleView, textColor);
 	    
 	    contentView.setText(content);
+	    contentView.setTypeface(tf);
+	    contentView.setTextSize(40);
 		UIUtils.setTextColor(contentView, textColor);
 		UIUtils.setGradient(this, startColor, endColor, orientation);
 

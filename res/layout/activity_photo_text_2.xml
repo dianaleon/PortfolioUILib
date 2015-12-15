@@ -8,7 +8,8 @@
 	<include
 	    android:id="@+id/header_body"
 	    android:layout_height="10dp"
-	    android:layout_weight="2.0"
+	    android:layout_width="match_parent"
+	    android:layout_weight="1.0"
 	    layout="@layout/header_body_2"
 	    android:paddingLeft="20dp"
 	    android:paddingTop="70dp" />
@@ -17,7 +18,7 @@
         android:id="@+id/body"
         android:layout_width="match_parent"
         android:layout_height="10dp"
-        android:layout_weight="7.2"
+        android:layout_weight="8.2"
         android:gravity="center_horizontal|clip_vertical"
         android:orientation="vertical" 
         
@@ -31,6 +32,7 @@
  				<include
  				    android:id="@+id/layout_content"
  				    android:layout_height="0dp"
+ 				    android:layout_width="match_parent"
  				    layout="@layout/body_img_text_2" />
 
  				<include
@@ -46,6 +48,9 @@
     
    <include
            android:id="@+id/layout_footer_2"
-           layout="@layout/footer_layout_2" />
+           layout="@layout/footer_layout_2" 
+           android:layout_height="0dp"
+           android:layout_weight="0.7"
+           android:layout_width="match_parent"/>
 
 </LinearLayout>

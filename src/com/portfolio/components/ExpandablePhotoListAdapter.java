@@ -6,9 +6,10 @@ import java.util.List;
 import com.portfolio.R;
 import com.portfolio.model.interfaces.component.IPageObject;
 import com.portfolio.util.UIUtils;
- 
+
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.provider.Contacts.Intents.UI;
@@ -20,7 +21,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
  
 public class ExpandablePhotoListAdapter extends BaseExpandableListAdapter {
- 
+	
+	private Typeface tf;
+     
     private Context _context;
     private List<String> _listDataHeader; // header titles
     // child data in format of header title, child title
@@ -29,10 +32,17 @@ public class ExpandablePhotoListAdapter extends BaseExpandableListAdapter {
  
     public ExpandablePhotoListAdapter(Context context, List<String> listDataHeader,
             HashMap<String, List<Bitmap>> listChildData,List<IPageObject> objetos) {
-        this._context = context;
+    	 
+    	tf = Typeface.createFromAsset(getAssets(),
+                "fonts/Raleway-Regular.ttf");
+    	 
+    	this._context = context;
         this._listDataHeader = listDataHeader;
+   
         this._listDataChild = listChildData;
         this._objetosExt = objetos;
+        
+       
     }
  
     @Override
@@ -96,17 +106,22 @@ public class ExpandablePhotoListAdapter extends BaseExpandableListAdapter {
             convertView = infalInflater.inflate(R.layout.list_group, null);
         }
  
+       
         TextView lblListHeader = (TextView) convertView
                 .findViewById(R.id.lblListHeader);
-        lblListHeader.setTypeface(null, Typeface.BOLD);
+        
+        lblListHeader.setTypeface(tf);
         String a = _objetosExt.get(groupPosition).getStartColorBackground();
         String b = _objetosExt.get(groupPosition).getEndColorBackground();
         UIUtils.setGradient(lblListHeader, _objetosExt.get(groupPosition).getStartColorBackground(),_objetosExt.get(groupPosition).getEndColorBackground(),String.valueOf(_objetosExt.get(groupPosition).getGradientOrientatio()));
         lblListHeader.setText(headerTitle);
+   
         String aa =  _objetosExt.get(groupPosition).getTextColor();
         UIUtils.setTextColor(lblListHeader, _objetosExt.get(groupPosition).getTextColor());
    
- 
+       
+       
+        lblListHeader.setTypeface(tf);
         return convertView;
     }
  

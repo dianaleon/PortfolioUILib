@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
@@ -42,7 +43,7 @@ public class PhotoTextActivity extends BaseActivity {
 
 		biographyImage = (ImageView) findViewById(R.id.imageView1);
 		biographyText = (TextView) findViewById(R.id.content);
-		biographyTitleText = (TextView) findViewById(R.id.title);
+		//biographyTitleText = (TextView) findViewById(R.id.title);
 		headerTitle = (TextView) findViewById(R.id.tittle_app);
 		headerSubtitle = (TextView) findViewById(R.id.sub_tittle_app);
 		layoutBody = findViewById(R.id.layout_content);
@@ -67,6 +68,7 @@ public class PhotoTextActivity extends BaseActivity {
 		if (objetos != null && objetos.size() > 0) {
 			IPageObject object = objetos.get(0);
 
+			//IMAGEN BIOGRAFIA
 			IImageObject imageObject = (IImageObject) object;
 			PortfolioModel.getInstance(this).getMedia(new IMediaListener() {
 				@Override
@@ -76,19 +78,22 @@ public class PhotoTextActivity extends BaseActivity {
 
 			}, imageObject.getContent_img());
 
+			//TEXTO BIOGRAFIA
 			Typeface font1 = Typeface.createFromAsset(this.getAssets(),
 					"fonts/Raleway-Regular.ttf");
 			
-			biographyText.setTypeface(font1, Typeface.BOLD);
+			biographyText.setTypeface(font1);
 			biographyText.setText(imageObject.getContent());
+			//TAMAÑO TEXTO BIOGRAFIA ARQUITECTO
 			biographyText.setTextSize(12);
-			
+			biographyText.setTextColor(Color.parseColor(object.getTextColor()));
+			/*
 			if (!imageObject.getTitle().equalsIgnoreCase("")) {
 				biographyTitleText.setText(imageObject.getTitle());
 			} else {
 				biographyTitleText.setVisibility(View.GONE);
 			}
-
+*/
 		}
 
 		// MENU

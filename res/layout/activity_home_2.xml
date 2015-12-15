@@ -12,7 +12,7 @@
 		    android:layout_width="match_parent"
 		    android:layout_height="10dp"
 		    android:layout_gravity="center_vertical|center_horizontal"
-		    android:layout_weight="9.0"
+		    android:layout_weight="9.5"
 		    android:gravity="top|center_horizontal"
 		    android:orientation="vertical" >
 			
@@ -24,6 +24,7 @@
 
  				<include
  				    android:id="@+id/layout_content"
+ 				    android:layout_width="fill_parent"
  				    android:layout_height="fill_parent"
  				    layout="@layout/body_home_2" />
 

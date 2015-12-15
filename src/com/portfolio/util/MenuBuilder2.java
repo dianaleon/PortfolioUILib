@@ -27,6 +27,7 @@ import com.portfolio.activities.NetworkActivity;
 import com.portfolio.activities.PhotoGridActivity;
 import com.portfolio.activities.PhotoTextActivity;
 import com.portfolio.activities.PhotoTextGridListActivity;
+
 import com.portfolio.activities.TextTextGridListActivity;
 import com.portfolio.activities.VideoActivity;
 import com.portfolio.components.menu;
@@ -40,20 +41,23 @@ import com.portfolio.model.interfaces.ITheme;
 public class MenuBuilder2 implements MenuBuilder {
 	
 	final int ICON_HEIGHT = 30;
-	final int ICON_WIDTH = 30;
+	final int ICON_WIDTH = 20;
 	//ALTO BOTON MENU
 	final int MENU_ITEM_WIDTH = 50;
 
+    
 
 
 	@Override
 	public void build(final menu baseMenu) {
 
+		//Fuente menu arquitectos
 		Typeface tf = Typeface.createFromAsset(baseMenu.getContext()
-				.getAssets(), "fonts/Raleway-Medium.ttf");
+				.getAssets(), "fonts/Raleway-Bold.ttf");
 		
 		final PortfolioModel portfolioModel = PortfolioModel
 				.getInstance(baseMenu.getContext());
+				
 		List<String> titles = (List<String>) portfolioModel.getPagesTitles();
 		List<Integer> posicion = (List<Integer>) portfolioModel
 				.getPagesPositions();
@@ -102,7 +106,7 @@ public class MenuBuilder2 implements MenuBuilder {
 			
 			TextView itemText = (TextView)but.findViewById(R.id.itemText);
 			itemText.setText(page.getTitle());
-			itemText.setTypeface(tf);
+			itemText.setTypeface(tf,Typeface.BOLD);
 			
 			but.setTag(pos);
 	
@@ -133,7 +137,7 @@ public class MenuBuilder2 implements MenuBuilder {
 						intent6.putExtra("position", pos);
 						baseMenu.getContext().startActivity(intent6);
 					}
-
+					//Arquitecto: pagina Proyectos
 					if (layout.equalsIgnoreCase("photo_text_gridlist")) {
 						Intent intent = new Intent(baseMenu.getContext(),
 								PhotoTextGridListActivity.class);
@@ -170,7 +174,8 @@ public class MenuBuilder2 implements MenuBuilder {
 						intent.putExtra("position", pos);
 						baseMenu.getContext().startActivity(intent);
 					}
-
+					
+					//ARQUITECTOS pagina biografia
 					if (layout.equalsIgnoreCase("photo_text")) {
 						Intent intent5 = new Intent(baseMenu.getContext(),
 								PhotoTextActivity.class);
@@ -184,18 +189,20 @@ public class MenuBuilder2 implements MenuBuilder {
 						baseMenu.getContext().startActivity(intent6);
 					}
 
-					if (layout.equalsIgnoreCase("accordion_image_list")) {
-						Intent intent7 = new Intent(baseMenu.getContext(),
-								AccordionPhotoActivity.class);
-						intent7.putExtra("position", pos);
-						baseMenu.getContext().startActivity(intent7);
-					}
+					
 
 					if (layout.equalsIgnoreCase("accordion_text_list")) {
 						Intent intent8 = new Intent(baseMenu.getContext(),
 								AccordionTextActivity.class);
 						intent8.putExtra("position", pos);
 						baseMenu.getContext().startActivity(intent8);
+					}
+					//Arquitectos: Portfolio
+					if (layout.equalsIgnoreCase("accordion_image_list")) {
+						Intent intent7 = new Intent(baseMenu.getContext(),
+								AccordionPhotoActivity.class);
+						intent7.putExtra("position", pos);
+						baseMenu.getContext().startActivity(intent7);
 					}
 
 				}
