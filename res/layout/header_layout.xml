@@ -7,7 +7,9 @@
     android:layout_gravity="top"
     android:layout_weight="3.0"
     android:gravity="center_vertical"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:background="@drawable/bg_header"
+ >
 
     <TextView
         android:id="@+id/tittle_app"

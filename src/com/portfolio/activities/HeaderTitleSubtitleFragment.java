@@ -30,11 +30,7 @@ public class HeaderTitleSubtitleFragment extends HeaderFragment {
 		IMenu menu = portfolioModel.getPorfolioMenu();
 		ITheme theme = portfolioModel.getTheme();
 
-		// LinearLayout layoutHeader = (LinearLayout)
-		// ((Activity)getActivity()).findViewById(R.id.layout_header);
-		UIUtils.setGradient(header, theme.getTitleBarBackground()
-				.getStartColor(), theme.getTitleBarBackground().getEndColor(),
-				String.valueOf(theme.getTitleBarBackground().getAngle()));
+	
 
 		Typeface font1 = Typeface.createFromAsset(getActivity().getAssets(),
 				"fonts/CopperplateGothicStd 31BC.otf");
@@ -50,7 +46,9 @@ public class HeaderTitleSubtitleFragment extends HeaderFragment {
 		customSubtittle.setTextSize(20);
 		customSubtittle.setTextScaleX(1);
 		customSubtittle.setText(menu.getSubtitle());
-
+		
+		
+		
 		return header;
 	}
 

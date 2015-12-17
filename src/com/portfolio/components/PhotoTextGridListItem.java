@@ -53,7 +53,7 @@ public class PhotoTextGridListItem extends TableRow {
 	    
 	    contentView.setText(content);
 	    contentView.setTypeface(tf);
-	    contentView.setTextSize(40);
+	    contentView.setTextSize(12);
 		UIUtils.setTextColor(contentView, textColor);
 		UIUtils.setGradient(this, startColor, endColor, orientation);
 

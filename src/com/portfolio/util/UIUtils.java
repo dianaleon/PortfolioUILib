@@ -1,16 +1,20 @@
 package com.portfolio.util;
 
 import android.app.Activity;
-
 import android.app.Fragment;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.GradientDrawable.Orientation;
+import android.graphics.Shader;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.AccelerateInterpolator;
@@ -27,6 +31,7 @@ import android.widget.LinearLayout.LayoutParams;
 import com.portfolio.R;
 import com.portfolio.activities.BaseActivity;
 import com.portfolio.activities.HeaderButtonTextFragment;
+import com.portfolio.activities.HeaderButtonTextFragmentContacto;
 import com.portfolio.activities.HeaderFragment;
 import com.portfolio.activities.HeaderTitleSubtitleFragment;
 import com.portfolio.components.menu;
@@ -70,7 +75,7 @@ public class UIUtils {
 		}
 	}
 
-	public static HeaderFragment getHeaderFragment(Context context) {
+	public static HeaderFragment getHeaderFragment(Context context, String tipoPage) {
 		
 		
 		PortfolioModel portfolioModel = PortfolioModel.getInstance(context);
@@ -81,11 +86,17 @@ public class UIUtils {
 			return new HeaderTitleSubtitleFragment();
 			//SI ES LA APP 2 QUE ES UN BOTON!!!!!
 		} else if (layoutHeader.equalsIgnoreCase("header_button_title")) {
-			return new HeaderButtonTextFragment();
+				if(tipoPage.equalsIgnoreCase("contacto")){
+					return new HeaderButtonTextFragmentContacto();
+				}else {
+					return new HeaderButtonTextFragment();
+				}
+				
+				 
 		}
 		return new HeaderTitleSubtitleFragment();
 	}
-
+//Abogados: setea el header en todas las paginas.
 	public static void setHeader(Context context) {
 		
 		// Setear el titulo en la pagina
@@ -95,11 +106,17 @@ public class UIUtils {
 
 		LinearLayout layoutHeader = (LinearLayout) ((Activity) context)
 				.findViewById(R.id.layout_header);
+		
+		 
+		
 		setGradient(layoutHeader,
 				theme.getTitleBarBackground().getStartColor(), theme
 						.getTitleBarBackground().getEndColor(),
 				String.valueOf(theme.getTitleBarBackground().getAngle()));
-
+		
+		layoutHeader.setBackground(context.getResources().getDrawable(R.drawable.bg_header));
+		
+		
 		
 		
 		TextView customTittle = (TextView) ((Activity) context)
@@ -107,11 +124,16 @@ public class UIUtils {
 		
 		customTittle.setTextSize(22);
 		customTittle.setText(menu.getTitle());
+		//Fuente actualizada diseñadora
 		Typeface font1 = Typeface.createFromAsset(context.getAssets(),
 				"fonts/Cinzel-Bold.ttf");
 		customTittle.setTypeface(font1);
 		customTittle.setTextColor(Color.WHITE);
+		customTittle.setAllCaps(true);
 		
+		
+		
+		//Fuente actualizada diseñadora
 		Typeface font2 = Typeface.createFromAsset(context.getAssets(),
 				"fonts/Cinzel-Regular.ttf");
 		TextView customSubtittle = (TextView) ((Activity) context)
@@ -119,6 +141,8 @@ public class UIUtils {
 		customSubtittle.setTypeface(font2);
 		customSubtittle.setTextSize(18);
 		customSubtittle.setTextScaleX(1);
+		customSubtittle.setAllCaps(true);
+		
 		customSubtittle.setText(menu.getSubtitle());
 		customSubtittle.setTextColor(Color.WHITE);
 	}

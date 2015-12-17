@@ -3,7 +3,7 @@
     style="@style/customHeaderTitleSubtitle"
     android:layout_width="fill_parent"
     android:layout_height="0dp"
-    android:layout_weight="0.8"
+    android:layout_weight="1.0"
     android:layout_gravity="bottom"
     android:background="@drawable/bg_footer_2"
     android:gravity="center_vertical"

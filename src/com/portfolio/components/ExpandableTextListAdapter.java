@@ -27,13 +27,15 @@ public class ExpandableTextListAdapter extends BaseExpandableListAdapter {
     // child data in format of header title, child title
     private HashMap<String, List<String>> _listDataChild;
     private List<IPageObject> _objetosExt;
- 
+    private String textColor;
+   
     public ExpandableTextListAdapter(Context context, List<String> listDataHeader,
             HashMap<String, List<String>> listChildData,List<IPageObject> objetos) {
         this._context = context;
         this._listDataHeader = listDataHeader;
         this._listDataChild = listChildData;
         this._objetosExt = objetos;
+       
     }
  
     @Override
@@ -61,6 +63,11 @@ public class ExpandableTextListAdapter extends BaseExpandableListAdapter {
  
         TextView txtListChild = (TextView) convertView
                 .findViewById(R.id.lblListItemText);
+        Typeface tf = Typeface.createFromAsset(this._context.getAssets(),
+				"fonts/Raleway-Regular.ttf");
+        txtListChild.setTypeface(tf);
+        txtListChild.setTextSize(12);
+        
         UIUtils.setTextColor(txtListChild,"#060804");
         txtListChild.setBackgroundColor(Color.parseColor("#E2E3E5"));
         
@@ -102,6 +109,7 @@ public class ExpandableTextListAdapter extends BaseExpandableListAdapter {
  
         TextView lblListHeader = (TextView) convertView
                 .findViewById(R.id.lblListHeader);
+        lblListHeader.setHeight(70);
        // lblListHeader.setTypeface(null, Typeface.BOLD);
         UIUtils.setGradient(lblListHeader, _objetosExt.get(groupPosition).getStartColorBackground(),_objetosExt.get(groupPosition).getEndColorBackground(),String.valueOf(_objetosExt.get(groupPosition).getGradientOrientatio()));
         lblListHeader.setText(headerTitle);

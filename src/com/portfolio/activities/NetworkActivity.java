@@ -18,10 +18,11 @@ import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import com.portfolio.util.UIUtils;
 
+import com.portfolio.util.UIUtils;
 import com.portfolio.R;
 import com.portfolio.listener.IMediaListener;
 import com.portfolio.model.PortfolioModel;
@@ -63,10 +64,16 @@ public class NetworkActivity extends BaseActivity {
 		// UIUtils.setHeader(this);
 
 		final TableLayout tableLayout = (TableLayout) findViewById(R.id.layout_content);
-		// UIUtils.setGradient(tableLayout,
-		// netPage.getType().getBackground().getStartColor(),
-		// netPage.getType().getBackground().getEndColor(),
-		// String.valueOf(netPage.getType().getBackground().getAngle()));
+		
+		LinearLayout fondo = (LinearLayout) findViewById(R.id.body);
+	 
+		UIUtils.setGradient(fondo, netPage.getType().getBackground());
+		
+		
+		/*UIUtils.setGradient(tableLayout,
+		netPage.getType().getBackground().getStartColor(),
+		netPage.getType().getBackground().getEndColor(),
+		String.valueOf(netPage.getType().getBackground().getAngle()));*/
 
 		// recorro los objetos del json
 		for (int index = 0; index < objetos.size(); index++) {
@@ -143,10 +150,10 @@ public class NetworkActivity extends BaseActivity {
 //			}
 //		}
 
-		
-		UIUtils.setGradient(tableLayout, netPage.getType().getBackground());
+		//Fondo espacio redes sociales
+		//UIUtils.setGradient(tableLayout, netPage.getType().getBackground());
 
-		if ((theme.getHomeImage() != null)
+		/*if ((theme.getHomeImage() != null)
 				&& (!theme.getHomeImage().equalsIgnoreCase("")))
 
 			PortfolioModel.getInstance(this).getMedia(new IMediaListener() {
@@ -160,7 +167,7 @@ public class NetworkActivity extends BaseActivity {
 				}
 
 			}, theme.getHomeImage());
-
+*/
 		// MENU
 		UIUtils.setMenu(this);
 	}

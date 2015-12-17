@@ -24,7 +24,7 @@ public class PhotoTextGridListActivity extends BaseActivity {
 		
 		super.onCreate(savedInstanceState);
 		//Aca hay que cambiar para layout arquitecto pagina proyectos
-		setContentView(R.layout.activity_photo_text_grid_list_layout2);
+		setContentView(R.layout.activity_photo_text_grid_list_layout);
 		Bundle bundle = this.getIntent().getExtras();
 		int position = bundle.getInt("position");
 		

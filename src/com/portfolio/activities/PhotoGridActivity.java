@@ -80,12 +80,14 @@ public class PhotoGridActivity extends Activity {
 			}
 		}
 
+		//Bufete: titulo 
 		TextView tittleTextView = (TextView) findViewById(R.id.content);
 		//UIUtils.setTextColor(tittleTextView, textColor);
 		tittleTextView.setTextColor(Color.parseColor("#231b10"));
 		Typeface font1 = Typeface.createFromAsset(this.getAssets(),
-				"fonts/CopperplateGothicStd 31BC.otf");
+				"fonts/OpenSans-Bold.ttf");
 		tittleTextView.setTypeface(font1);
+		tittleTextView.setAllCaps(true);
 		UIUtils.setGradient(tittleTextView, startColor, endColor, gradientColor);
 		tittleTextView.setText(title);
 		tittleTextView.setTextSize(14);

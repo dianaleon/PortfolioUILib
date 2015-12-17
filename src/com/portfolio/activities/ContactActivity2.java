@@ -43,6 +43,7 @@ public class ContactActivity2 extends Activity {
 
 		// cargar el layout
 		final LinearLayout linearLayout = (LinearLayout) findViewById(R.id.layout_content);
+		//ACA pone el borde que es marron y tiene que ser dorado
 		UIUtils.setGradient(linearLayout, contactPage.getType().getBackground().getStartColor(), contactPage.getType().getBackground().getEndColor(), String.valueOf(contactPage.getType().getBackground().getAngle()));
 
 		List<IPageObject> objetos = contactPage.getObjects();

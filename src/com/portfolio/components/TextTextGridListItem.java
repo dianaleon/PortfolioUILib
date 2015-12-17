@@ -43,7 +43,7 @@ public class TextTextGridListItem extends TableRow {
 	public void fill(String left_Title, String title, String content, String textColor, String startColor, String endColor, String orientation) {
 		leftTitle.setText(left_Title);
 		contentView.setText(content);
-		contentView.setTextSize(8);
+		contentView.setTextSize(12);
 		UIUtils.setTextColor(contentView, textColor);
 		UIUtils.setGradient(this, startColor, endColor, orientation);
 

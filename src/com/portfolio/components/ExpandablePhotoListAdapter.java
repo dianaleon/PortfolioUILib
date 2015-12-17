@@ -33,8 +33,7 @@ public class ExpandablePhotoListAdapter extends BaseExpandableListAdapter {
     public ExpandablePhotoListAdapter(Context context, List<String> listDataHeader,
             HashMap<String, List<Bitmap>> listChildData,List<IPageObject> objetos) {
     	 
-    	tf = Typeface.createFromAsset(getAssets(),
-                "fonts/Raleway-Regular.ttf");
+    	
     	 
     	this._context = context;
         this._listDataHeader = listDataHeader;
@@ -109,8 +108,10 @@ public class ExpandablePhotoListAdapter extends BaseExpandableListAdapter {
        
         TextView lblListHeader = (TextView) convertView
                 .findViewById(R.id.lblListHeader);
-        
+        Typeface tf = Typeface.createFromAsset(this._context.getAssets(),
+				"fonts/Raleway-Regular.ttf");
         lblListHeader.setTypeface(tf);
+        
         String a = _objetosExt.get(groupPosition).getStartColorBackground();
         String b = _objetosExt.get(groupPosition).getEndColorBackground();
         UIUtils.setGradient(lblListHeader, _objetosExt.get(groupPosition).getStartColorBackground(),_objetosExt.get(groupPosition).getEndColorBackground(),String.valueOf(_objetosExt.get(groupPosition).getGradientOrientatio()));
@@ -118,10 +119,6 @@ public class ExpandablePhotoListAdapter extends BaseExpandableListAdapter {
    
         String aa =  _objetosExt.get(groupPosition).getTextColor();
         UIUtils.setTextColor(lblListHeader, _objetosExt.get(groupPosition).getTextColor());
-   
-       
-       
-        lblListHeader.setTypeface(tf);
         return convertView;
     }
  

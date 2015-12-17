@@ -112,6 +112,7 @@ public class MenuBuilder1 implements MenuBuilder {
 						baseMenu.getContext().startActivity(intent3);
 
 					}
+					//"!!!!!
 					if (layout.equalsIgnoreCase("contacto")) {
 						Intent intent6 = new Intent(baseMenu.getContext(),
 								ContactActivity2.class);
@@ -125,6 +126,7 @@ public class MenuBuilder1 implements MenuBuilder {
 						intent.putExtra("position", pos);
 						baseMenu.getContext().startActivity(intent);
 					}
+					//Abogados: bufette + derecho mercantil
 					if (layout.equalsIgnoreCase("photo_grid")) {
 						Intent intent = new Intent(baseMenu.getContext(),
 								PhotoGridActivity.class);

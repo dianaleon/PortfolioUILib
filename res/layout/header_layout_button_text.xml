@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/header"
-    style="@style/customHeaderTitleSubtitle"
+    android:background="@color/transparent" 
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:gravity="center_vertical" >
@@ -18,7 +18,8 @@
     <RelativeLayout
         android:id="@+id/header_text_layout"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"  >
 
         <TextView
             android:id="@+id/header_text"
@@ -27,9 +28,9 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"
             android:textAllCaps="true"
-            android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#2f3133"
-            android:textSize="25sp" />
+            android:textSize="25sp"
+            android:background="@color/transparent" />
     </RelativeLayout>
 
 </LinearLayout>

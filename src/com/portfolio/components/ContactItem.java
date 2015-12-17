@@ -18,26 +18,32 @@ import com.portfolio.util.UIUtils;
 public class ContactItem extends LinearLayout {
 
 	private TextView textView;
+	private Typeface tf;
 	
 	public ContactItem(Context context) {
 		super(context);
+		tf = Typeface.createFromAsset(getContext().getAssets(),
+				"fonts/Raleway-Regular.ttf");
 		((Activity)context).getLayoutInflater().inflate(R.layout.contact_item, this);
 		init();
 	}
 
 	public ContactItem(Context context, AttributeSet attrs) {
+		
 		super(context, attrs);
 	}
 
 	private void init() {
-		Typeface tf = Typeface.createFromAsset(getContext().getAssets(),
-				"fonts/CopperGothicStd29AB.otf");
+		
 		textView = (TextView) findViewById(R.id.contentText);
 		textView.setHeight(30);
 	}
 	
 	public void fill(String content, String textColor, String startColor, String endColor, String orientation) {
+	 
+		textView.setTypeface(tf);
 		textView.setText(content);
+		
 		UIUtils.setTextColor(textView, textColor);
 		UIUtils.setGradient(textView, startColor, endColor, orientation);
 	}
@@ -46,7 +52,9 @@ public class ContactItem extends LinearLayout {
 			String startColor, String endColor,
 			String orientation, final String type) {
 		fill(content, textColor, startColor, endColor, orientation);
-		textView.setHeight(20);
+		textView.setHeight(40);
+	 
+		textView.setTypeface(tf);
 		textView.setOnClickListener(new OnClickListener() {
 				
 			@Override

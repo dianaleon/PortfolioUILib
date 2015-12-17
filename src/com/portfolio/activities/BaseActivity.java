@@ -8,6 +8,7 @@ import com.portfolio.util.UIUtils;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,14 +34,17 @@ public abstract class BaseActivity extends Activity {
 
 	public void loadHeader(IPage page) {
 		headerView = findViewById(R.id.layout_header_container);
-		HeaderFragment headerFragment = UIUtils.getHeaderFragment(this);
+		String typePage = page.getLayout();
+		HeaderFragment headerFragment = UIUtils.getHeaderFragment(this,typePage);
 		headerFragment.setPage(page);
+		
 		// container_header.setLayoutParams(new LinearLayout.LayoutParams(
 		// LinearLayout.LayoutParams.MATCH_PARENT, 0, 3.0f));
 
 		// container_header.addView(headerView, 0);
 		getFragmentManager().beginTransaction()
 				.add(R.id.layout_header_container, headerFragment).commit();
+		 
 	}
 
 	public void loadFooter() {

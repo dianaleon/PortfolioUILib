@@ -124,6 +124,7 @@ public class MenuBuilder2 implements MenuBuilder {
 						intent4.putExtra("position", pos);
 						baseMenu.getContext().startActivity(intent4);
 					}
+					//Arquitecto: pagina Redes Sociales
 					if (layout.equalsIgnoreCase("redesSociales")) {
 						Intent intent3 = new Intent(baseMenu.getContext(),
 								NetworkActivity.class);
@@ -131,6 +132,7 @@ public class MenuBuilder2 implements MenuBuilder {
 						baseMenu.getContext().startActivity(intent3);
 
 					}
+					//Arquitecto: pagina Contacto
 					if (layout.equalsIgnoreCase("contacto")) {
 						Intent intent6 = new Intent(baseMenu.getContext(),
 								ContactActivity.class);
@@ -190,7 +192,7 @@ public class MenuBuilder2 implements MenuBuilder {
 					}
 
 					
-
+					//Arquitectos: Servicios
 					if (layout.equalsIgnoreCase("accordion_text_list")) {
 						Intent intent8 = new Intent(baseMenu.getContext(),
 								AccordionTextActivity.class);
