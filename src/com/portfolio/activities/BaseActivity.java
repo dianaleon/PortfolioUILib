@@ -34,6 +34,7 @@ public abstract class BaseActivity extends Activity {
 	}
 
 	public void loadHeader(IPage page) {
+		
 		headerView = findViewById(R.id.layout_header_container);
 		headerView.setBackgroundColor(color.transparent);
 		String typePage = page.getLayout();
