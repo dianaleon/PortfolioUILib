@@ -95,6 +95,7 @@ public class HeaderButtonTextFragment extends HeaderFragment {
 		customSubtittle.setText(page.getTitle());
 		customSubtittle.setTextColor(Color.parseColor(menu.getText_color()));
 
+		
 		return header;
 	}
 

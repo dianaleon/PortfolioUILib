@@ -109,7 +109,7 @@ public class ExpandableTextListAdapter extends BaseExpandableListAdapter {
  
         TextView lblListHeader = (TextView) convertView
                 .findViewById(R.id.lblListHeader);
-        lblListHeader.setHeight(70);
+      
        // lblListHeader.setTypeface(null, Typeface.BOLD);
         UIUtils.setGradient(lblListHeader, _objetosExt.get(groupPosition).getStartColorBackground(),_objetosExt.get(groupPosition).getEndColorBackground(),String.valueOf(_objetosExt.get(groupPosition).getGradientOrientatio()));
         lblListHeader.setText(headerTitle);

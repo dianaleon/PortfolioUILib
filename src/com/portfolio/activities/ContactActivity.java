@@ -2,9 +2,11 @@ package com.portfolio.activities;
 
 import java.util.List;
 
+import android.R.color;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -31,7 +33,13 @@ public class ContactActivity extends BaseActivity {
 		setContentView(R.layout.activity_contacto_layout);
 		Bundle bundle = this.getIntent().getExtras();
 		int position = bundle.getInt("position");
+		
+		LinearLayout bg = (LinearLayout) findViewById(R.id.layout_header_body_container);
+		bg.setBackgroundColor(color.transparent);
+		
 		loadHeader(page);
+		
+		
 		loadFooter();
 
 		// levanto la pagina de esa posicion

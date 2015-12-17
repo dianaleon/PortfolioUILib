@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/header"
-    android:background="@color/transparent" 
+      android:background="@android:color/transparent"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_height="fill_parent" 
     android:gravity="center_vertical" >
 <!--
     <ImageButton
@@ -19,7 +19,7 @@
         android:id="@+id/header_text_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/transparent"  >
+      >
 
         <TextView
             android:id="@+id/header_text"

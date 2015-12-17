@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
 import com.portfolio.R;
-import com.portfolio.components.PhotoTextGridListItem;
+import com.portfolio.components.PhotoTextGridListItem3;
 import com.portfolio.model.PortfolioModel;
 import com.portfolio.model.interfaces.IPhotoTxtGridListPage;
 import com.portfolio.model.interfaces.component.IImageObject;
@@ -49,7 +49,7 @@ public class PhotoTextGridListActivity2 extends Activity {
 			switch (object.getType()) {
 				case IPageObject.type_text:
 					ITextObject textObject = (ITextObject) object;
-					PhotoTextGridListItem item = new PhotoTextGridListItem(this);
+					PhotoTextGridListItem3 item = new PhotoTextGridListItem3(this);
 					item.fill(textObject.getContent_img(), textObject.getTitle(),
 							textObject.getContent(), textObject.getTextColor(), textObject.getStartColorBackground(), textObject.getEndColorBackground(), textObject.getGradientOrientatio());
 					LayoutParams params = (LayoutParams) linearLayout.getLayoutParams();
@@ -59,7 +59,7 @@ public class PhotoTextGridListActivity2 extends Activity {
 					break;
 				case IPageObject.type_image:
 					IImageObject imageObject = (IImageObject) object;
-					PhotoTextGridListItem itemImage = new PhotoTextGridListItem(this);
+					PhotoTextGridListItem3 itemImage = new PhotoTextGridListItem3(this);
 					itemImage.fill(imageObject.getContent_img(), imageObject.getTitle(),
 							imageObject.getContent(), imageObject.getTextColor(), imageObject.getStartColorBackground(), imageObject.getEndColorBackground(), imageObject.getGradientOrientatio());
 					//linearLayout.addView(itemImage);

@@ -46,12 +46,6 @@ public class HeaderButtonTextFragmentContacto extends HeaderFragment {
 		IMenu menu = portfolioModel.getPorfolioMenu();
 		ITheme theme = portfolioModel.getTheme();
 
-		UIUtils.setGradient(header, 
-				theme.getTitleBarBackground()
-				.getStartColor(), theme.getTitleBarBackground().getEndColor(),
-				String.valueOf(theme.getTitleBarBackground().getAngle()));
-		 
-
 		Typeface font1 = Typeface.createFromAsset(getActivity().getAssets(),
 				"fonts/Raleway-Bold.ttf");
 
@@ -98,7 +92,7 @@ public class HeaderButtonTextFragmentContacto extends HeaderFragment {
 		customSubtittle.setTextColor(Color.parseColor(menu.getText_color()));
 		
 		
-		//header.setBackgroundColor(Color.TRANSPARENT);
+		
 	
 		return header;
 	}

@@ -6,7 +6,8 @@
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:scrollbarStyle="insideInset"
-    android:weightSum="10.0" >
+    android:weightSum="10.0"
+    android:background="@drawable/transparente_bg" >
 
     <LinearLayout
         android:id="@+id/layout_header_body_container"
@@ -18,14 +19,16 @@
         android:orientation="vertical"
         android:scrollbarAlwaysDrawVerticalTrack="true"
         android:scrollbarStyle="insideOverlay"
-        android:scrollbars="vertical" >
+        android:scrollbars="vertical"
+        android:background="@drawable/transparente_bg">
 
         <LinearLayout
             android:id="@+id/layout_header_container"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="0dp" 
             android:layout_weight="2.0"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:background="@drawable/transparente_bg" >
         </LinearLayout>
 
         <LinearLayout
@@ -34,7 +37,7 @@
             android:layout_height="10dp"
             android:layout_gravity="center_vertical|center_horizontal"
             android:layout_weight="8.0"
-            android:background="#000"
+           
             android:gravity="top|center_horizontal"
             android:orientation="vertical" >
 

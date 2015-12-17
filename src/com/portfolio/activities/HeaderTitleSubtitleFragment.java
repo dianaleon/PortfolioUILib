@@ -8,6 +8,7 @@ import com.portfolio.util.UIUtils;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -30,8 +31,7 @@ public class HeaderTitleSubtitleFragment extends HeaderFragment {
 		IMenu menu = portfolioModel.getPorfolioMenu();
 		ITheme theme = portfolioModel.getTheme();
 
-	
-
+		
 		Typeface font1 = Typeface.createFromAsset(getActivity().getAssets(),
 				"fonts/CopperplateGothicStd 31BC.otf");
 

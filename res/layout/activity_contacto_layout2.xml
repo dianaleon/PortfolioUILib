@@ -40,7 +40,7 @@
 
                 <include
                     android:id="@+id/layout_content"
-                    layout="@layout/body_contact" />
+                    layout="@layout/body_contact2" />
 
                 <include
                     android:id="@+id/layout_menu"

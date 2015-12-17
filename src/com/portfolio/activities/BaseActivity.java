@@ -6,6 +6,7 @@ import com.portfolio.model.interfaces.IPage;
 import com.portfolio.model.interfaces.ITheme;
 import com.portfolio.util.UIUtils;
 
+import android.R.color;
 import android.app.Activity;
 import android.app.Fragment;
 import android.graphics.Color;
@@ -34,10 +35,12 @@ public abstract class BaseActivity extends Activity {
 
 	public void loadHeader(IPage page) {
 		headerView = findViewById(R.id.layout_header_container);
+		headerView.setBackgroundColor(color.transparent);
 		String typePage = page.getLayout();
+		 
 		HeaderFragment headerFragment = UIUtils.getHeaderFragment(this,typePage);
 		headerFragment.setPage(page);
-		
+		 
 		// container_header.setLayoutParams(new LinearLayout.LayoutParams(
 		// LinearLayout.LayoutParams.MATCH_PARENT, 0, 3.0f));
 

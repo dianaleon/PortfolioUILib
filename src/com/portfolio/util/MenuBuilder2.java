@@ -22,12 +22,12 @@ import com.portfolio.activities.AccordionPhotoActivity;
 import com.portfolio.activities.AccordionTextActivity;
 import com.portfolio.activities.CatalogoActivity;
 import com.portfolio.activities.ContactActivity;
+import com.portfolio.activities.ContactActivity2;
 import com.portfolio.activities.ImageActivity;
 import com.portfolio.activities.NetworkActivity;
 import com.portfolio.activities.PhotoGridActivity;
 import com.portfolio.activities.PhotoTextActivity;
 import com.portfolio.activities.PhotoTextGridListActivity;
-
 import com.portfolio.activities.TextTextGridListActivity;
 import com.portfolio.activities.VideoActivity;
 import com.portfolio.components.menu;
@@ -132,7 +132,7 @@ public class MenuBuilder2 implements MenuBuilder {
 						baseMenu.getContext().startActivity(intent3);
 
 					}
-					//Arquitecto: pagina Contacto
+					//Arquitecto: pagina Contacto llama a contactActivity2 ironicamente!
 					if (layout.equalsIgnoreCase("contacto")) {
 						Intent intent6 = new Intent(baseMenu.getContext(),
 								ContactActivity.class);
@@ -184,6 +184,7 @@ public class MenuBuilder2 implements MenuBuilder {
 						intent5.putExtra("position", pos);
 						baseMenu.getContext().startActivity(intent5);
 					}
+					//Arquitectos: Clientes
 					if (layout.equalsIgnoreCase("text_text_gridlist")) {
 						Intent intent6 = new Intent(baseMenu.getContext(),
 								TextTextGridListActivity.class);
