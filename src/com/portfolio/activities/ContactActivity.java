@@ -34,11 +34,7 @@ public class ContactActivity extends BaseActivity {
 		Bundle bundle = this.getIntent().getExtras();
 		int position = bundle.getInt("position");
 		
-		LinearLayout bg = (LinearLayout) findViewById(R.id.layout_header_body_container);
-		bg.setBackgroundColor(color.transparent);
-		
 		loadHeader(page);
-		
 		
 		loadFooter();
 
