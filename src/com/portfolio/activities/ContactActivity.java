@@ -47,8 +47,8 @@ public class ContactActivity extends BaseActivity {
 		//UIUtils.setHeader(this);
 
 		// cargar el layout
+		final LinearLayout fullLayout = (LinearLayout) findViewById(R.id.layout_header_body_container);
 		final LinearLayout linearLayout = (LinearLayout) findViewById(R.id.layout_content);
-		UIUtils.setGradient(linearLayout, contactPage.getType().getBackground().getStartColor(), contactPage.getType().getBackground().getEndColor(), String.valueOf(contactPage.getType().getBackground().getAngle()));
 
 		List<IPageObject> objetos = contactPage.getObjects();
 		for (int index = 0; index < objetos.size(); index++) {
@@ -70,7 +70,7 @@ public class ContactActivity extends BaseActivity {
 		}
 		
 		
-		 UIUtils.setGradient(linearLayout, contactPage.getType().getBackground());
+		 //UIUtils.setGradient(linearLayout, contactPage.getType().getBackground());
 		    
 		  if ((theme.getHomeImage() != null) && (!theme.getHomeImage().equalsIgnoreCase("")))
 		
@@ -79,8 +79,7 @@ public class ContactActivity extends BaseActivity {
 				public void onImageReady(Bitmap bitmap) {
 					Drawable drawable = new BitmapDrawable(getResources(), bitmap);
 					//linear.setBackgroundColor(Color.TRANSPARENT);
-					linearLayout.setBackgroundDrawable(drawable);
-					
+					fullLayout.setBackgroundDrawable(drawable);
 				}
 
 			}, theme.getHomeImage());

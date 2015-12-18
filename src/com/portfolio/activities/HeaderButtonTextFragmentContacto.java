@@ -49,9 +49,9 @@ public class HeaderButtonTextFragmentContacto extends HeaderFragment {
 		Typeface font1 = Typeface.createFromAsset(getActivity().getAssets(),
 				"fonts/Raleway-Bold.ttf");
 
-		UIUtils.setGradient(header, theme.getTitleBarBackground());
+		//UIUtils.setGradient(header, theme.getTitleBarBackground());
 		//header.setBackgroundColor(Color.BLUE);
-		header.setAlpha(0.7f);
+		//header.setAlpha(0.7f);
 
 		final ViewFlipper flipper = (ViewFlipper) (getActivity()).findViewById(R.id.flipper);
 
