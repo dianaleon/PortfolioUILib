@@ -26,7 +26,7 @@ public class PhotoTextGridListItem2 extends TableRow {
 
 	public PhotoTextGridListItem2(Context context) {
 		super(context);
-		((Activity)context).getLayoutInflater().inflate(R.layout.photo_text_grid_list_item, this);
+		((Activity)context).getLayoutInflater().inflate(R.layout.photo_text_grid_list_item_catalogo, this);
 		init();
 	}
 
@@ -37,7 +37,7 @@ public class PhotoTextGridListItem2 extends TableRow {
 	private void init() {
 	
 		tf = Typeface.createFromAsset(getContext().getAssets(),
-				"fonts/CopperGothicStd29AB.otf");
+				"fonts/OpenSans-ExtraBold.ttf");
 		imageView = (ImageView) findViewById(R.id.imageView1);
 		titleView = (TextView) findViewById(R.id.tittle_item_list);
 		contentView = (TextView) findViewById(R.id.text_page_item);
@@ -45,7 +45,7 @@ public class PhotoTextGridListItem2 extends TableRow {
 	
 	public void fill(String contentImage, String title, String content, String textTitleColor,String textContentColor, String startColor, String endColor, String orientation) {
 		titleView.setText(title);
-	    titleView.setTypeface(null,Typeface.BOLD);
+	    titleView.setTypeface(tf);
 	    titleView.setTextSize(14);
 	    
 	    contentView.setText(content);

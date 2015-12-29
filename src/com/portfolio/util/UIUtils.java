@@ -110,8 +110,8 @@ public class UIUtils {
 		 
 		
 		setGradient(layoutHeader,
-				theme.getTitleBarBackground().getStartColor(), theme
-						.getTitleBarBackground().getEndColor(),
+				theme.getTitleBarBackground().getStartColor(),
+				theme.getTitleBarBackground().getEndColor(),
 				String.valueOf(theme.getTitleBarBackground().getAngle()));
 		
 		layoutHeader.setBackground(context.getResources().getDrawable(R.drawable.bg_header));

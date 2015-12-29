@@ -77,7 +77,7 @@ public class CatalogoActivity2 extends Activity {
 							linearLayout.addView(item);
 							LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) item.getLayoutParams();
 							params.bottomMargin = 1;
-							params.topMargin = 1;
+							//params.topMargin = 1;
 							
 						
 							
@@ -116,7 +116,7 @@ public class CatalogoActivity2 extends Activity {
 						linearLayout.addView(item);
 						LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) item.getLayoutParams();
 						params.bottomMargin = 1;
-						params.topMargin = 1;
+						//params.topMargin = 1;
 						
 					
 						

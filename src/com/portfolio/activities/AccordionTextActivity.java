@@ -70,24 +70,11 @@ public class AccordionTextActivity extends BaseActivity {
 		// Set background Image
 		UIUtils.setGradient(expListView, netPage.getType().getBackground());
 
-		if ((theme.getHomeImage() != null)
-				&& (!theme.getHomeImage().equalsIgnoreCase("")))
-
-			PortfolioModel.getInstance(this).getMedia(new IMediaListener() {
-				@Override
-				public void onImageReady(Bitmap bitmap) {
-					Drawable drawable = new BitmapDrawable(getResources(),
-							bitmap);
-					// linear.setBackgroundColor(Color.TRANSPARENT);
-					expListView.setBackgroundDrawable(drawable);
-
-				}
-
-			}, theme.getHomeImage());
+	
 
 		
 		AbsListView.LayoutParams layoutParams = new AbsListView.LayoutParams(
-				LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+				LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
 		accordionBanner.setLayoutParams(layoutParams);
 		accordionBanner.setScaleType(ScaleType.CENTER_CROP);
 		PortfolioModel.getInstance(this).getMedia(new IMediaListener() {

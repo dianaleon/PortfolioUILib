@@ -69,7 +69,7 @@ public class PhotoGridActivity extends Activity {
 				endColor = img.getEndColorBackground();
 				gradientColor = img.getGradientOrientatio();
 				
-				//UIUtils.setGradient(linearLayout, img.getStartColorBackground(), img.getEndColorBackground(), String.valueOf(img.getGradientOrientatio()));
+				UIUtils.setGradient(linearLayout, img.getStartColorBackground(), img.getEndColorBackground(), String.valueOf(img.getGradientOrientatio()));
 				PortfolioModel.getInstance(this).getMedia(new IMediaListener() {
 					@Override
 					public void onImageReady(Bitmap bitmap) {
@@ -80,7 +80,7 @@ public class PhotoGridActivity extends Activity {
 			}
 		}
 
-		//Bufete: titulo 
+		//ACA PONE EL COLOR AL FONDO DEL TIUTLO, que viene del json page data bg
 		TextView tittleTextView = (TextView) findViewById(R.id.content);
 		//UIUtils.setTextColor(tittleTextView, textColor);
 		tittleTextView.setTextColor(Color.parseColor("#231b10"));
@@ -92,6 +92,7 @@ public class PhotoGridActivity extends Activity {
 		tittleTextView.setText(title);
 		tittleTextView.setTextSize(14);
 		
+		//ACA PONE EL COLOR AL FONDO DEL TEXTO, que viene del json page type bg
 		TextView contentTextView = (TextView) findViewById(R.id.text_page_item);
 		UIUtils.setGradient(contentTextView, bgColor, bgColor, gradientColor);
 		UIUtils.setTextColor(contentTextView, startColor);

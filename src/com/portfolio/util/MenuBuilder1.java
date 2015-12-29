@@ -193,8 +193,7 @@ public class MenuBuilder1 implements MenuBuilder {
 			//COLOR BORDE ITEMS MENU
 			linear.setBackgroundColor(Color.parseColor(menu.getText_color()));
 			//COLOR FONDO EXTRA DEL MENU
-			baseMenu.setBackgroundColor(Color.parseColor(theme.getBackground()
-					.getStartColor()));
+			baseMenu.setBackgroundColor(Color.parseColor(theme.getMenuItemBackground().getStartColor()));
 
 			LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT,
 					UIUtils.getDimension(40));

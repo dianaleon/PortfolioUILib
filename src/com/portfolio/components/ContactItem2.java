@@ -31,7 +31,7 @@ public class ContactItem2 extends LinearLayout {
 
 	private void init() {
 		Typeface tf = Typeface.createFromAsset(getContext().getAssets(),
-				"fonts/CopperGothicStd29AB.otf");
+				"fonts/OpenSans-Bold.ttf");
 		textView = (TextView) findViewById(R.id.contentText);
 	}
 	

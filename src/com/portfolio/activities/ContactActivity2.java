@@ -43,9 +43,18 @@ public class ContactActivity2 extends Activity {
 
 		// cargar el layout
 		final LinearLayout linearLayout = (LinearLayout) findViewById(R.id.layout_content);
-		//ACA pone el borde que es marron y tiene que ser dorado
-		UIUtils.setGradient(linearLayout, contactPage.getType().getBackground().getStartColor(), contactPage.getType().getBackground().getEndColor(), String.valueOf(contactPage.getType().getBackground().getAngle()));
-
+		//ACA pone el borde que es marron y tiene que ser dorado. COLOR BORDE!
+		UIUtils.setGradient(linearLayout, 
+				contactPage.getType().getBackground().getStartColor(), 
+				contactPage.getType().getBackground().getEndColor(), 
+				String.valueOf(contactPage.getType().getBackground().getAngle()));
+		
+		 /*UIUtils.setGradient(linearLayout,
+				//contactPage.getType().getBackground().getStartColor(), viene del bg de la pagina!
+				"#AD9C67", 
+				"#A49367", 
+				String.valueOf(contactPage.getType().getBackground().getAngle()));
+				 */
 		List<IPageObject> objetos = contactPage.getObjects();
 		for (int index = 0; index < objetos.size(); index++) {
 			IPageObject object = objetos.get(index);
@@ -56,9 +65,12 @@ public class ContactActivity2 extends Activity {
 				String type = contact.getSubtype();
 				if (type != null) {
 					ContactItem2 contactItem = new ContactItem2(this);
-					contactItem.fill(content, contact.getTextColor(),
-								contact.getStartColorBackground(),
-								contact.getEndColorBackground(),
+					
+					contactItem.fill(content, 
+							contact.getTextColor(),
+							//aca pone el color de bg del item con el color de bg del data
+							contact.getStartColorBackground(),
+							contact.getEndColorBackground(),
 								contact.getGradientOrientatio(), type);
 					linearLayout.addView(contactItem);
 				}

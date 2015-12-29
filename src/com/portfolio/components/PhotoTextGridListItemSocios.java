@@ -38,7 +38,7 @@ public class PhotoTextGridListItemSocios extends TableRow {
 	private void init() {
 	
 		tf = Typeface.createFromAsset(getContext().getAssets(),
-				"fonts/CopperGothicStd29AB.otf");
+				"fonts/OpenSans-Bold.ttf");
 		imageView = (ImageView) findViewById(R.id.imageView1);
 		titleView = (TextView) findViewById(R.id.tittle_item_list);
 		contentView = (TextView) findViewById(R.id.text_page_item);
