@@ -73,7 +73,7 @@ public class ImageActivity extends Activity {
 		}
 
 		// MENU
-		UIUtils.setMenu(this);
+		UIUtils.setMenuApp2(this);
 	}
 
 	@Override

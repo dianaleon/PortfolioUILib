@@ -100,7 +100,7 @@ public class PhotoGridActivity extends Activity {
 		contentTextView.setText(content);
 
 		// MENU
-		UIUtils.setMenu(this);
+		UIUtils.setMenuApp2(this);
 	}
 
 	@Override

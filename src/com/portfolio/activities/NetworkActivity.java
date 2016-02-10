@@ -169,7 +169,7 @@ public class NetworkActivity extends BaseActivity {
 			}, theme.getHomeImage());
 */
 		// MENU
-		UIUtils.setMenu(this);
+		UIUtils.setMenuApp2(this);
 	}
 
 	@Override

@@ -75,7 +75,7 @@ public class TextTextGridListActivity extends BaseActivity {
 		}
 
 		// MENU
-		UIUtils.setMenu(this);
+		UIUtils.setMenuApp2(this);
 	}
 
 	@Override

@@ -24,11 +24,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
-import android.widget.ExpandableListView;
+
 import android.widget.ImageView;
+import android.widget.ExpandableListView.OnGroupExpandListener;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 
+import android.widget.ExpandableListView;
+import android.widget.ExpandableListView.OnChildClickListener;
+import android.widget.ExpandableListView.OnGroupClickListener;
+import android.widget.ExpandableListView.OnGroupCollapseListener;
+import android.widget.ExpandableListView.OnGroupExpandListener;
+import android.widget.Toast;
 public class AccordionTextActivity extends BaseActivity {
 
 	ExpandableTextListAdapter listAdapter;
@@ -86,7 +93,24 @@ public class AccordionTextActivity extends BaseActivity {
 
 		}, netPage.getContent());
 
-		UIUtils.setMenu(this);
+		//PRUEBA DIANA
+				// Listview Group expanded listener
+				expListView.setOnGroupExpandListener(new OnGroupExpandListener() {
+				 
+				    @Override
+				    public void onGroupExpand(int groupPosition) {
+				    	ExpandableTextListAdapter customExpandAdapter = (ExpandableTextListAdapter)expListView.getExpandableListAdapter();
+				    	if (customExpandAdapter == null) {return;}
+		                for (int i = 0; i < customExpandAdapter.getGroupCount(); i++) {
+		                    if (i != groupPosition) {
+		                    	expListView.collapseGroup(i);
+		                    }
+		                }
+				    }
+				});
+				
+				//PRUEBA DIANA FIN
+		UIUtils.setMenuApp2(this);
 	}
 
 	private void prepareListData(List<IPageObject> objetos) {

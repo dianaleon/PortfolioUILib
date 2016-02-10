@@ -33,8 +33,6 @@ public class ExpandablePhotoListAdapter extends BaseExpandableListAdapter {
     public ExpandablePhotoListAdapter(Context context, List<String> listDataHeader,
             HashMap<String, List<Bitmap>> listChildData,List<IPageObject> objetos) {
     	 
-    	
-    	 
     	this._context = context;
         this._listDataHeader = listDataHeader;
    

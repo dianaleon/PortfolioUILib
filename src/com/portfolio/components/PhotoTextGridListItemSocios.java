@@ -24,6 +24,7 @@ public class PhotoTextGridListItemSocios extends TableRow {
 	private TextView titleView;
 	private TextView contentView;
 	private Typeface tf;
+	private Typeface tfTexto;
 
 	public PhotoTextGridListItemSocios(Context context) {
 		super(context);
@@ -39,6 +40,8 @@ public class PhotoTextGridListItemSocios extends TableRow {
 	
 		tf = Typeface.createFromAsset(getContext().getAssets(),
 				"fonts/OpenSans-Bold.ttf");
+		tfTexto = Typeface.createFromAsset(getContext().getAssets(),
+				"fonts/OpenSans-Regular.ttf");
 		imageView = (ImageView) findViewById(R.id.imageView1);
 		titleView = (TextView) findViewById(R.id.tittle_item_list);
 		contentView = (TextView) findViewById(R.id.text_page_item);
@@ -46,10 +49,11 @@ public class PhotoTextGridListItemSocios extends TableRow {
 	
 	public void fill(String contentImage, String title, String content, String textTitleColor,String textContentColor, String startColor, String endColor, String orientation) {
 		titleView.setText(title);
-	    titleView.setTypeface(null,Typeface.BOLD);
-	    titleView.setTextSize(14);
+	    titleView.setTypeface(tf,Typeface.BOLD);
+	    titleView.setTextSize(16);
 	    
 	    contentView.setText(content);
+	    contentView.setTypeface(tfTexto);
 	    contentView.setTextSize(10);
 		UIUtils.setTextColor(titleView, textTitleColor);
 		UIUtils.setTextColor(contentView, textContentColor);

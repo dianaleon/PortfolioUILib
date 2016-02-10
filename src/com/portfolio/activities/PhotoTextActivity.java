@@ -84,6 +84,7 @@ public class PhotoTextActivity extends BaseActivity {
 			
 			biographyText.setTypeface(font1);
 			biographyText.setText(imageObject.getContent());
+			
 			//TAMAÑO TEXTO BIOGRAFIA ARQUITECTO
 			biographyText.setTextSize(12);
 			biographyText.setTextColor(Color.parseColor(object.getTextColor()));
@@ -97,7 +98,7 @@ public class PhotoTextActivity extends BaseActivity {
 		}
 
 		// MENU
-		UIUtils.setMenu(this);
+		UIUtils.setMenuApp2(this);
 	}
 
 //	@Override

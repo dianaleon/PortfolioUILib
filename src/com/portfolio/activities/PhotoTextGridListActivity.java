@@ -71,7 +71,7 @@ public class PhotoTextGridListActivity extends BaseActivity {
 		}
 
 		// MENU
-		UIUtils.setMenu(this);
+		UIUtils.setMenuApp2(this);
 	}
 
 

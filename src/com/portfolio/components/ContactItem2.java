@@ -1,5 +1,7 @@
 package com.portfolio.components;
 
+import java.util.Locale;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -18,7 +20,7 @@ import com.portfolio.util.UIUtils;
 public class ContactItem2 extends LinearLayout {
 
 	private TextView textView;
-	
+	private String direccionCiudad;
 	public ContactItem2(Context context) {
 		super(context);
 		((Activity)context).getLayoutInflater().inflate(R.layout.contact_item, this);
@@ -33,6 +35,7 @@ public class ContactItem2 extends LinearLayout {
 		Typeface tf = Typeface.createFromAsset(getContext().getAssets(),
 				"fonts/OpenSans-Bold.ttf");
 		textView = (TextView) findViewById(R.id.contentText);
+		direccionCiudad = "";
 	}
 	
 	public void fill(String content, String textColor, String startColor, String endColor, String orientation) {
@@ -48,15 +51,20 @@ public class ContactItem2 extends LinearLayout {
 
 	public void fill(final String content, String textColor,
 			String startColor, String endColor,
-			String orientation, final String type) {
+			String orientation, final String type,
+			 final String direccionCiudad,
+			 final String nombreCiudad,
+			 final String cpCiudad) {
 		fill(content, textColor, startColor, endColor, orientation);
+		 
 		textView.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				if (type.equalsIgnoreCase(IContactPage.movil) || type.equalsIgnoreCase(IContactPage.telefono)) {
 			        String number = "tel:" + content.trim();
-				    Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse(number));
+				    //Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse(number));
+				    Intent callIntent = new Intent(Intent.ACTION_DIAL, Uri.parse(number));
 			        v.getContext().startActivity(callIntent);
 				}
 				if (type.equalsIgnoreCase(IContactPage.email)) {
@@ -71,6 +79,13 @@ public class ContactItem2 extends LinearLayout {
 					Intent intent = new Intent(Intent.ACTION_VIEW,
 							uri);
 					v.getContext().startActivity(intent);
+				}
+				if (type.equalsIgnoreCase(IContactPage.address)) {
+					 
+					Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + direccionCiudad +"+" + nombreCiudad + "+" + cpCiudad);
+					Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+					mapIntent.setPackage("com.google.android.apps.maps");
+					v.getContext().startActivity(mapIntent);
 				}
 			}
 		});

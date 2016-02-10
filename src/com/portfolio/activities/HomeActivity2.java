@@ -60,7 +60,7 @@ public class HomeActivity2 extends Activity {
 	//	UIUtils.setHeader(this);
 
 		// MENU
-		UIUtils.setMenu(this);
+		UIUtils.setMenuApp2(this);
 	}
 
 	@Override

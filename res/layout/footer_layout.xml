@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/customHeaderTitleSubtitle"
+   
     android:layout_width="fill_parent"
     android:layout_height="1dp"
     android:layout_gravity="bottom"
-    android:background="@drawable/bg_header"
     android:gravity="center_vertical"
     android:orientation="vertical" >
 
         <ImageButton
             android:id="@+id/buttonMenu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_gravity="center_vertical|center_horizontal"
             android:src="@drawable/menu"
             android:background="@android:color/transparent"

@@ -25,7 +25,9 @@ import com.portfolio.util.UIUtils;
 
 @SuppressLint("ResourceAsColor")
 public class ContactActivity extends BaseActivity {
-
+	private String direccionCiudad;
+	private String nombreCiudad;
+	private String cpCiudad;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
@@ -33,7 +35,9 @@ public class ContactActivity extends BaseActivity {
 		setContentView(R.layout.activity_contacto_layout);
 		Bundle bundle = this.getIntent().getExtras();
 		int position = bundle.getInt("position");
-		
+		direccionCiudad = "";
+		nombreCiudad = "";
+		cpCiudad = "";
 		loadHeader(page);
 		
 		loadFooter();
@@ -51,6 +55,23 @@ public class ContactActivity extends BaseActivity {
 		final LinearLayout linearLayout = (LinearLayout) findViewById(R.id.layout_content);
 
 		List<IPageObject> objetos = contactPage.getObjects();
+		
+		for (int index = 0; index < objetos.size(); index++) {
+			IPageObject object = objetos.get(index);
+			String content = object.getContent();
+			IContactObject contact = (IContactObject) object;
+			String type = contact.getSubtype();
+			if (type.equalsIgnoreCase(IContactPage.address))  {
+				direccionCiudad = content;
+			}
+			if (type.equalsIgnoreCase(IContactPage.ciudad))  {
+				nombreCiudad = content;
+			}
+			if (type.equalsIgnoreCase(IContactPage.cp))  {
+				cpCiudad = content;
+			}
+		}
+		
 		for (int index = 0; index < objetos.size(); index++) {
 			IPageObject object = objetos.get(index);
 			String content = object.getContent();
@@ -63,7 +84,7 @@ public class ContactActivity extends BaseActivity {
 					contactItem.fill(content, contact.getTextColor(),
 								contact.getStartColorBackground(),
 								contact.getEndColorBackground(),
-								contact.getGradientOrientatio(), type);
+								contact.getGradientOrientatio(), type, direccionCiudad,nombreCiudad,cpCiudad);
 					linearLayout.addView(contactItem);
 				}
 			}
@@ -72,7 +93,7 @@ public class ContactActivity extends BaseActivity {
 		
 		 //UIUtils.setGradient(linearLayout, contactPage.getType().getBackground());
 		    
-		  if ((theme.getHomeImage() != null) && (!theme.getHomeImage().equalsIgnoreCase("")))
+		  if ((theme.getHomeImageClear() != null) && (!theme.getHomeImage().equalsIgnoreCase("")))
 		
 			PortfolioModel.getInstance(this).getMedia(new IMediaListener() {
 				@Override
@@ -82,10 +103,10 @@ public class ContactActivity extends BaseActivity {
 					fullLayout.setBackgroundDrawable(drawable);
 				}
 
-			}, theme.getHomeImage());
+			}, theme.getHomeImageClear());
 
 		// MENU
-		UIUtils.setMenu(this);
+		UIUtils.setMenuApp2(this);
 	}
 	
 	@Override

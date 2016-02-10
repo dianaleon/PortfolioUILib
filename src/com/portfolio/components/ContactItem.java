@@ -19,7 +19,7 @@ public class ContactItem extends LinearLayout {
 
 	private TextView textView;
 	private Typeface tf;
-	
+	private String direccionCiudad;
 	public ContactItem(Context context) {
 		super(context);
 		tf = Typeface.createFromAsset(getContext().getAssets(),
@@ -34,7 +34,7 @@ public class ContactItem extends LinearLayout {
 	}
 
 	private void init() {
-		
+		direccionCiudad = "";
 		textView = (TextView) findViewById(R.id.contentText);
 		textView.setHeight(30);
 	}
@@ -50,18 +50,22 @@ public class ContactItem extends LinearLayout {
 
 	public void fill(final String content, String textColor,
 			String startColor, String endColor,
-			String orientation, final String type) {
+			String orientation, final String type,
+			 final String direccionCiudad,
+			 final String nombreCiudad,
+			 final String cpCiudad) {
 		fill(content, textColor, startColor, endColor, orientation);
 		textView.setHeight(40);
-	 
 		textView.setTypeface(tf);
+		 
 		textView.setOnClickListener(new OnClickListener() {
 				
 			@Override
 			public void onClick(View v) {
 				if (type.equalsIgnoreCase(IContactPage.movil) || type.equalsIgnoreCase(IContactPage.telefono)) {
 			        String number = "tel:" + content.trim();
-				    Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse(number));
+				    //Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse(number));
+				    Intent callIntent = new Intent(Intent.ACTION_DIAL, Uri.parse(number));
 			        v.getContext().startActivity(callIntent);
 				}
 				if (type.equalsIgnoreCase(IContactPage.email)) {
@@ -77,6 +81,14 @@ public class ContactItem extends LinearLayout {
 							uri);
 					v.getContext().startActivity(intent);
 				}
+				if (type.equalsIgnoreCase(IContactPage.address)) {
+					 
+					Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + direccionCiudad +"+" + nombreCiudad + "+" + cpCiudad);
+					Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+					mapIntent.setPackage("com.google.android.apps.maps");
+					v.getContext().startActivity(mapIntent);
+				}
+				
 			}
 		});
 	}

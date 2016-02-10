@@ -23,6 +23,7 @@ import com.portfolio.activities.AccordionPhotoActivity;
 import com.portfolio.activities.AccordionTextActivity;
 import com.portfolio.activities.CatalogoActivity;
 import com.portfolio.activities.CatalogoActivity2;
+import com.portfolio.activities.CatalogoActivitySocios;
 import com.portfolio.activities.ContactActivity;
 import com.portfolio.activities.ContactActivity2;
 import com.portfolio.activities.ImageActivity;
@@ -139,6 +140,12 @@ public class MenuBuilder1 implements MenuBuilder {
 								CatalogoActivity2.class);
 						intentCat.putExtra("position", pos);
 						baseMenu.getContext().startActivity(intentCat);
+					}
+					if (layout.equalsIgnoreCase("catalogo2")) {
+						Intent intentSocios = new Intent(baseMenu.getContext(),
+								CatalogoActivitySocios.class);
+						intentSocios.putExtra("position", pos);
+						baseMenu.getContext().startActivity(intentSocios);
 					}
 
 					if (layout.equalsIgnoreCase("curriculum")) {

@@ -153,14 +153,82 @@ public class UIUtils {
 		final menu menuLayout = (menu) ((Activity) context)
 				.findViewById(R.id.layout_menu);
 		menuLayout.init(UIUtils.getMenuBuilder());
-
+		
+		
+		
+		
 		final LinearLayout bgFooter = (LinearLayout) ((Activity) context)
 				.findViewById(R.id.layout_footer);
 		String colorStartMenu = menu.getBackground().getStartColor();
 		String colorEndMenu = menu.getBackground().getEndColor();
 		setGradient(bgFooter, colorStartMenu, colorEndMenu,
 				String.valueOf(menu.getBackground().getAngle()));
+		
+		bgFooter.setBackground(context.getResources().getDrawable(R.drawable.bg_header));
+		
+		
+		final ViewFlipper flipper = (ViewFlipper) ((Activity) context)
+				.findViewById(R.id.flipper);
+		final ImageButton buttonMenu = (ImageButton) ((Activity) context)
+				.findViewById(R.id.buttonMenu);
+		LayoutParams params = (LayoutParams) buttonMenu.getLayoutParams();
+		//params.weight = (float) 0.5;	
+		
+				
+				//new LayoutParams(UIUtils.getDimension(50),UIUtils.getDimension(50));
+		
+		buttonMenu.setLayoutParams(params);
+		buttonMenu.setScaleType(ScaleType.CENTER_INSIDE);
+		PortfolioModel.getInstance(context).getMedia(new IMediaListener() {
+			@Override
+			public void onImageReady(Bitmap bitmap) {
+				
+				buttonMenu.setImageBitmap(bitmap);
+				
+				bgFooter.invalidate();
+			}
 
+		}, menu.getIcon());
+		
+		
+
+		buttonMenu.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				flipper.setInAnimation(inFromRightAnimation());
+				flipper.setOutAnimation(outToLeftAnimation());
+				flipper.showNext();
+				if (context instanceof BaseActivity)
+					// Si es el cero es la pagina
+					if (flipper.getDisplayedChild() == 1)
+						((BaseActivity) context).getHeaderView().setVisibility(
+								View.GONE);
+					else
+						((BaseActivity) context).onContentVisible();
+
+			}
+		});
+
+	}
+public static void setMenuApp2(final Context context) {
+		
+		IMenu menu = PortfolioModel.getInstance(context).getPorfolioMenu();
+		final menu menuLayout = (menu) ((Activity) context)
+				.findViewById(R.id.layout_menu);
+		menuLayout.init(UIUtils.getMenuBuilder());
+		
+		
+		
+		
+		final LinearLayout bgFooter = (LinearLayout) ((Activity) context)
+				.findViewById(R.id.layout_footer);
+		String colorStartMenu = menu.getBackground().getStartColor();
+		String colorEndMenu = menu.getBackground().getEndColor();
+		setGradient(bgFooter, colorStartMenu, colorEndMenu,
+				String.valueOf(menu.getBackground().getAngle()));
+		
+		//bgFooter.setBackground(context.getResources().getDrawable(R.drawable.bg_header));
+		
+		
 		final ViewFlipper flipper = (ViewFlipper) ((Activity) context)
 				.findViewById(R.id.flipper);
 		final ImageButton buttonMenu = (ImageButton) ((Activity) context)
@@ -203,7 +271,6 @@ public class UIUtils {
 		});
 
 	}
-
 	public static Animation inFromRightAnimation() {
 
 		Animation inFromRight = new TranslateAnimation(

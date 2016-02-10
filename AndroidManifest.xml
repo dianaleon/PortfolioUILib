@@ -33,6 +33,7 @@
         </activity>
         <activity android:name=".activities.ContactActivity" >
         </activity>
+        
         <activity android:name=".activities.NetworkActivity" >
         </activity>
         <activity android:name=".activities.TextActivity" >

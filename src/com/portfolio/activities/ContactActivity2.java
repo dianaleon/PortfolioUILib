@@ -5,6 +5,7 @@ import java.util.List;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -23,7 +24,9 @@ import com.portfolio.util.UIUtils;
 
 @SuppressLint("ResourceAsColor")
 public class ContactActivity2 extends Activity {
-
+	private String direccionCiudad;
+	private String nombreCiudad;
+	private String cpCiudad;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
@@ -32,7 +35,9 @@ public class ContactActivity2 extends Activity {
 		Bundle bundle = this.getIntent().getExtras();
 		int position = bundle.getInt("position");
 		UIUtils.setHeader(this);
-
+		direccionCiudad = "";
+		nombreCiudad = "";
+		cpCiudad = "";
 		// levanto la pagina de esa posicion
 		// la interfaz que se llama contact, que tiene una lista de url + nombre
 		// + etc
@@ -43,12 +48,14 @@ public class ContactActivity2 extends Activity {
 
 		// cargar el layout
 		final LinearLayout linearLayout = (LinearLayout) findViewById(R.id.layout_content);
+		final LinearLayout fondo = (LinearLayout) findViewById(R.id.body);
+		fondo.setBackgroundColor(Color.parseColor("#23250f"));
 		//ACA pone el borde que es marron y tiene que ser dorado. COLOR BORDE!
 		UIUtils.setGradient(linearLayout, 
 				contactPage.getType().getBackground().getStartColor(), 
 				contactPage.getType().getBackground().getEndColor(), 
 				String.valueOf(contactPage.getType().getBackground().getAngle()));
-		
+
 		 /*UIUtils.setGradient(linearLayout,
 				//contactPage.getType().getBackground().getStartColor(), viene del bg de la pagina!
 				"#AD9C67", 
@@ -56,6 +63,22 @@ public class ContactActivity2 extends Activity {
 				String.valueOf(contactPage.getType().getBackground().getAngle()));
 				 */
 		List<IPageObject> objetos = contactPage.getObjects();
+		for (int index = 0; index < objetos.size(); index++) {
+			IPageObject object = objetos.get(index);
+			String content = object.getContent();
+			IContactObject contact = (IContactObject) object;
+			String type = contact.getSubtype();
+			if (type.equalsIgnoreCase(IContactPage.address))  {
+				direccionCiudad = content;
+			}
+			if (type.equalsIgnoreCase(IContactPage.ciudad))  {
+				nombreCiudad = content;
+			}
+			if (type.equalsIgnoreCase(IContactPage.cp))  {
+				cpCiudad = content;
+			}
+		}
+		
 		for (int index = 0; index < objetos.size(); index++) {
 			IPageObject object = objetos.get(index);
 			String content = object.getContent();
@@ -71,7 +94,7 @@ public class ContactActivity2 extends Activity {
 							//aca pone el color de bg del item con el color de bg del data
 							contact.getStartColorBackground(),
 							contact.getEndColorBackground(),
-								contact.getGradientOrientatio(), type);
+								contact.getGradientOrientatio(), type, direccionCiudad,nombreCiudad,cpCiudad);
 					linearLayout.addView(contactItem);
 				}
 			}
@@ -80,7 +103,7 @@ public class ContactActivity2 extends Activity {
 		
 		 UIUtils.setGradient(linearLayout, contactPage.getType().getBackground());
 		    
-
+			
 		// MENU
 		UIUtils.setMenu(this);
 	}

@@ -79,6 +79,6 @@ public class CatalogoActivity extends Activity {
 		}
 
 		// MENU
-		UIUtils.setMenu(this);
+		UIUtils.setMenuApp2(this);
 	}
 }
